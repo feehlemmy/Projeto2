@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudo">
+			<div id="content-wrapper">
+				<div class="container-fluid">
+					<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardEscola">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Boletins</li>
+                        <li class="breadcrumb-item active">Lista de componentes do boletim</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card" th:object="${boletimComponente}">
+                    	<p class="card-header">Lista dos componentes do boletim
+                    		<a th:href="@{/getBoletinsEscola}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm  float-right">Ver boletins</a>
+                    	</p>
+                        <div class="card-body">
+				            <div class="table-responsive">
+				                <table class="table table-striped table-hover table-sm">
+				                    <thead>
+					                    <tr>
+					                        <th>#</th>
+					                        <th>Nome</th>
+					                        <th>Ação</th>
+					                    </tr>
+				                    </thead>
+				                    <tbody>
+					                    <tr th:each="c : ${componentes}">
+					                        <td th:text="${c[0]}">1</td>
+					                        <td th:text="${c[1]}">Aluno</td>
+					                        <td colspan="2">
+					                            <button th:id="${ 'btn_boletins/removerComponente/' + c[0]}" type="button" class="btn btn-danger btn-sm"
+					                            		data-toggle="modal" data-target="#removerBoletimModal">
+					                                <i class="fas fa-minus-square"></i>
+					                            </button>
+					                        </td>
+					                    </tr>
+				                    </tbody>
+				                </table>
+				            </div>
+                        </div>
+                	</div>
+				</div>
+			</div>
+	    </section>
+	</body>
+</html>	

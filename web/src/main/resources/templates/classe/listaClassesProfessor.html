@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboardProfessor}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudoProfessor">
+			<div id="content-wrapper">
+				<div class="container-fluid">
+					<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardProfessor">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Classes</li>
+                        <li class="breadcrumb-item active">Lista de Classes</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Lista das suas classes</p>
+                        <div class="card-body">
+				            <div class="table-responsive">
+				                <table class="table table-striped table-hover table-sm">
+				                    <thead>
+				                    <tr>
+				                        <th>#</th>
+				                        <th>Nome</th>
+				                        <th>Turno</th>
+				                        <th>Ano Letivo</th>
+				                        <th>Ano</th>
+				                        <th>Ações</th>
+				                    </tr>
+				                    </thead>
+				                    <tbody>
+					                    <tr th:each="c : ${classes}">
+					                        <td th:text="${c[0]}">1</td>
+					                        <td th:text="${c[1]}">Nome</td>
+					                        <td th:text="${c[2]}">Turno</td>
+					                        <td th:text="${c[3]}">Ano Letivo</td>
+					                        <td th:text="${c[4]}">Ano</td>
+					                        <td colspan="2">
+			                            		<a class="btn btn-warning btn-sm" th:href="@{/listarAlunosClasseProfessor/{id} (id=${c[0]})}" role="button" data-toggle="tooltip" data-placement="left" title="Ver alunos">
+			                                		<i class="fas fa-list-alt"></i>
+			                            		</a>
+					                        </td>
+					                    </tr>
+				                    </tbody>
+				                </table>
+				            </div>
+                        </div>
+                	</div>
+				</div>
+			</div>
+	    </section>
+	</body>
+</html>	

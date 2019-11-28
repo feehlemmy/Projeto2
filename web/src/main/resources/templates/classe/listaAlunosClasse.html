@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudo">
+			<div id="content-wrapper">
+				<div class="container-fluid">
+					<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardEscola">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Classes</li>
+                        <li class="breadcrumb-item active">Listagem de alunos</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card" th:object="${classe}">
+                    	<p class="card-header">Lista dos alunos da classe
+                    		<a th:href="@{/listarClasses}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm  float-right">Ver classes</a>
+                    	</p>
+                        <div class="card-body">
+				            <div class="table-responsive">
+				                <table class="table table-striped table-hover table-sm">
+				                    <thead>
+					                    <tr>
+					                        <th>#</th>
+					                        <th>Nome</th>
+					                        <th>Ação</th>
+					                    </tr>
+				                    </thead>
+				                    <tbody>
+					                    <tr th:each="a : ${alunos}">
+					                        <td th:text="${a[0]}">1</td>
+					                        <td th:text="${a[1]}">Aluno</td>
+					                        <td colspan="2">
+					                            <a class="btn btn-info btn-sm" th:href="@{/editarAluno/{id} (id=${a[0]}) }" role="button" data-toggle="tooltip" data-placement="left" title="Editar aluno">
+				                                	<i class="fas fa-pen"></i>
+				                            	</a>
+				                            	<a class="btn btn-warning btn-sm" th:href="@{/getBoletimAluno/{id} (id=${a[0]}) }" role="button" data-toggle="tooltip" data-placement="left" title="Ver boletim">
+				                                	<i class="fas fa-list-ol text-white"></i>
+				                            	</a>
+					                            <button th:id="${ 'btn_classe/removerAluno/' + a[0]}" type="button" class="btn btn-danger btn-sm"
+					                            		data-toggle="modal" data-target="#removerAlunoModal">
+					                                <i class="fas fa-minus-square"></i>
+					                            </button>
+					                        </td>
+					                    </tr>
+				                    </tbody>
+				                </table>
+				            </div>
+                        </div>
+                	</div>
+				</div>
+			</div>
+	    </section>
+	</body>
+</html>	

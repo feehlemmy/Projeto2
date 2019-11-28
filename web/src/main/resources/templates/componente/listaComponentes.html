@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudo">
+			<div id="content-wrapper">
+				<div class="container-fluid">
+					<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardEscola">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Componentes</li>
+                        <li class="breadcrumb-item active">Lista de Componentes</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Lista dos componentes curriculares nesta escola
+                    		<a th:href="@{/cadastrarComponente}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm  float-right">Novo componente</a>
+                    	</p>
+                        <div class="card-body">
+				            <div class="table-responsive">
+				                <table class="table table-striped table-hover table-sm">
+				                    <thead>
+				                    <tr>
+				                        <th>#</th>
+				                        <th>Nome</th>
+				                        <th>Carga Horária</th>
+				                        <th>Média de Aprovação</th>
+				                        <th>Tipo de Avaliação</th>
+				                        <th>Ações</th>
+				                    </tr>
+				                    </thead>
+				                    <tbody>
+					                    <tr th:each="c : ${componentes}">
+					                        <td th:text="${c[0]}">1</td>
+					                        <td th:text="${c[1]}">Nome</td>
+					                        <td th:text="${c[2]}">Carga Horária</td>
+					                        <td th:text="${c[4]}">Média de Aprovação</td>
+					                        <td th:text="${c[3]}">Tipo de Avaliação</td>
+					                        <td colspan="2">
+					                            <a class="btn btn-info btn-sm" th:href="@{/editarComponente/{id} (id=${c[0]}) }" role="button" data-toggle="tooltip" data-placement="left" title="Editar componente">
+					                                <i class="fas fa-pen"></i>
+					                            </a>
+					                            <button th:id="${'btn_componentes/excluir/' + c[0]}" type="button" class="btn btn-danger btn-sm"
+					                            		data-toggle="modal" data-target="#excluirModal">
+					                            		<i class="fas fa-trash-alt"></i>
+					                            </button>
+					                        </td>
+					                    </tr>
+				                    </tbody>
+				                </table>
+				            </div>
+                        </div>
+                	</div>
+				</div>
+			</div>
+	    </section>
+	</body>
+</html>	

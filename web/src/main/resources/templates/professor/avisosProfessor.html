@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboardProfessor}">
+	<head>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudoProfessor">
+	        <div id="content-wrapper">
+                <div class="container-fluid">
+                	<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardProfessor">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Avisos</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Seus avisos
+                    		<button class="btn btn-primary btn-sm float-right" type="button" onclick="novoAviso()">Novo aviso</button>
+                    	</p>
+                        <div class="card-body">
+                        	<div class="table-responsive">
+				                <table class="table table-striped table-hover table-sm">
+				                    <thead>
+				                    <tr>
+				                        <th>#</th>
+				                        <th>Título</th>
+				                        <th>Data</th>
+				                        <th>Ano Classe</th>
+				                        <th>Tipo</th>
+				                        <th>Conteúdo</th>
+				                    </tr>
+				                    </thead>
+				                    <tbody id="listaAvisos"></tbody>
+				                </table>
+				                <br/>
+				                <p><small>Para editar uma linha, basta clicar sobre ela.</small></p>
+				            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal Novo Aviso -->
+            <form th:action="@{/professor/novoAviso}" th:object="${aviso}" method="POST">
+            	<div class="modal fade" id="avisoModal" tabindex="-1" role="dialog" aria-labelledby="avisoModalLabel" aria-hidden="true">
+		            <div class="modal-dialog" role="document">
+		                <div class="modal-content">
+		                    <div class="modal-header">
+		                        <h5 class="modal-title" id="exampleModalLabel">Dados do aviso</h5>
+		                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		                            <span aria-hidden="true">&times;</span>
+		                        </button>
+		                    </div>
+		                    <div class="modal-body">
+		                    	<div class="form-group row">
+                                	<label for="recipient-titulo-evento" class="col-form-label">Título</label>
+                                	<input type="text" class="form-control" id="recipient-titulo-evento" th:field="*{tituloAviso}" required="true"/>
+                                	<label for="inputAnoClasse">Ano da classe</label>
+                                	<select id="inputAnoClasse" class="form-control" required="true" th:field="*{anoClasse}">
+	                                   <option value="" disabled>Escolha</option>
+	                                   <option value="1 Ano">1º Ano</option>
+	                                   <option value="2 Ano">2º Ano</option>
+	                                   <option value="3 Ano">3º Ano</option>
+	                                   <option value="4 Ano">4º Ano</option>
+	                                   <option value="5 Ano">5º Ano</option>
+	                               </select>
+		                    	</div>
+		                    	<div class="form-group row">
+                                	<label for="tipoAviso">Tipo do aviso</label>
+									<select id="tipoAviso" class="form-control" th:field="*{tipoAviso}">
+                                        <option value="" disabled>Escolha</option>
+                                        <option value="Prova">Prova</option>
+                                        <option value="Trabalho">Trabalho</option>
+                                        <option value="Viagem">Viagem</option>
+                                        <option value="Reunião">Reunião</option>
+                                        <option value="Outros">Outros</option>
+                                    </select>
+                                	<label for="recipient-data-aviso">Data do aviso</label>
+                                	<input type="date" class="form-control" id="recipient-data-aviso" th:field="*{dataAviso}" required="true"/>
+		                    	</div>
+		                    	<div class="form-group row">
+		                    		<label for="recipient-conteudo-aviso" class="col-form-label">Conteúdo</label>
+                                	<input type="text" class="form-control" id="recipient-conteudo-aviso" th:field="*{conteudo}" required="true"/>
+		                    	</div>
+		                    </div>
+		                    <div class="modal-footer">
+		                        <button class="btn btn-secundary" data-dismiss="modal">Cancelar</button>
+		                        <button type="submit" class="btn btn-primary">Enviar</button>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+            </form>
+	        <!-- Modal Novo Aviso -->
+	        
+	        <!-- Modal Editar Aviso -->
+            <form th:action="@{/professor/editarAviso}" th:object="${aviso}" method="POST">
+            	<div class="modal fade" id="editarAvisoModal" tabindex="-1" role="dialog" aria-labelledby="avisoModalLabel" aria-hidden="true">
+		            <div class="modal-dialog" role="document">
+		                <div class="modal-content">
+		                    <div class="modal-header">
+		                        <h5 class="modal-title" id="exampleModalLabel">Dados do aviso</h5>
+		                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		                            <span aria-hidden="true">&times;</span>
+		                        </button>
+		                    </div>
+		                    <div class="modal-body">
+		                    	<div class="form-group row">
+		                    		<input type="hidden" class="form-control" id="recipient-id-editar-aviso" th:field="*{id}" readonly />
+                                	<label for="recipient-titulo-editar-aviso" class="col-form-label">Título</label>
+                                	<input type="text" class="form-control" id="recipient-titulo-editar-aviso" th:field="*{tituloAviso}" required="true"/>
+                                	<label for="recipient-ano-classe-editar-aviso">Ano da classe</label>
+                                	<select id="recipient-ano-classe-editar-aviso" class="form-control" required="true" th:field="*{anoClasse}">
+	                                   <option value="" disabled>Escolha</option>
+	                                   <option value="1 Ano">1º Ano</option>
+	                                   <option value="2 Ano">2º Ano</option>
+	                                   <option value="3 Ano">3º Ano</option>
+	                                   <option value="4 Ano">4º Ano</option>
+	                                   <option value="5 Ano">5º Ano</option>
+	                               </select>
+		                    	</div>
+		                    	<div class="form-group row">
+                                	<label for="tipoAvisoEditarAviso">Tipo do aviso</label>
+									<select id="tipoAvisoEditarAviso" class="form-control" th:field="*{tipoAviso}">
+                                        <option value="" disabled>Escolha</option>
+                                        <option value="Prova">Prova</option>
+                                        <option value="Trabalho">Trabalho</option>
+                                        <option value="Viagem">Viagem</option>
+                                        <option value="Reunião">Reunião</option>
+                                        <option value="Outros">Outros</option>
+                                    </select>
+                                	<label for="recipient-data-editar-aviso">Data do aviso</label>
+                                	<input type="date" class="form-control" id="recipient-data-editar-aviso" th:field="*{dataAviso}" required="true"/>
+		                    	</div>
+		                    	<div class="form-group row">
+		                    		<label for="recipient-conteudo-editar-aviso" class="col-form-label">Conteúdo</label>
+                                	<input type="text" class="form-control" id="recipient-conteudo-editar-aviso" th:field="*{conteudo}" required="true"/>
+		                    	</div>
+		                    </div>
+		                    <div class="modal-footer">
+		                        <button class="btn btn-secundary" data-dismiss="modal">Cancelar</button>
+		                        <button type="submit" class="btn btn-primary">Enviar</button>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+            </form>
+	        <!-- Modal Editar Aviso -->
+            
+            <script>
+	            var avisos = [];
+				
+				$('document').ready(function(){
+					$.ajax({
+						url: '/getAvisosProfessor',
+				        type: 'GET',
+				        success: function (dataAvisos) {
+				            for (var i = 0; i < dataAvisos.length; i++) {
+				                avisos.push(dataAvisos[i]);
+				            }
+				            adicionarAvisos();
+				        }
+					});
+				});
+				
+				function adicionarAvisos(){
+					for (var i = 0; i < avisos.length; i++) {
+				        var aviso = avisos[i];
+				        
+				        $('#listaAvisos').append('<tr class="clickable">' +
+				        		'<td>' + aviso.id + '</td>' +
+				        		'<td>' + aviso.tituloAviso + '</td>' +
+				        		'<td>' + aviso.dataAviso + '</td>' +
+				        		'<td>' + aviso.anoClasse + '</td>' +
+				        		'<td>' + aviso.tipoAviso + '</td>' +
+				        		'<td>' + aviso.conteudo + '</td>' +
+				        	'</tr>');
+				    }
+					
+					eventoClick();
+				}
+				
+				function eventoClick(){
+					$('.clickable').on('click', function() {
+						var evID = $(this).closest('tr');
+					  	var conteudo = evID[0].innerText;
+					  	var valores = conteudo.split('\t');
+					  	modalEditarAviso(valores);
+					});	
+				}
+				
+				function modalEditarAviso(valores){
+					$("#recipient-id-editar-aviso").val(valores[0]);
+                    $("#recipient-titulo-editar-aviso").val(valores[1]);
+                    $("#recipient-ano-classe-editar-aviso").val(valores[3]);
+                    $("#tipoAvisoEditarAviso").val(valores[4]);
+                    $("#recipient-data-editar-aviso").val(valores[2]);
+                    $("#recipient-conteudo-editar-aviso").val(valores[5]);
+					$('#editarAvisoModal').modal('show');
+				}
+								
+		        function novoAviso() {
+		        	$('#avisoModal').modal('show');
+	        	}
+			</script>	
+	    </section>
+	</body>
+</html>		

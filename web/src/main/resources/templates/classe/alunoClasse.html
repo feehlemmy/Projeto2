@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+	<head>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudo">
+	        <div id="content-wrapper">
+                <div class="container-fluid">
+                	<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardEscola">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Classes</li>
+                        <li class="breadcrumb-item active">Adicionar Alunos</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Selecione o aluno para adicionar a classe
+                    		<a th:href="@{/listarClasses}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm  float-right">Ver classes</a>
+                    	</p>
+                        <div class="card-body">
+                        	<form th:action="@{/addAlunosClasse}" th:object="${classe}" method="POST">
+                        		<div>
+		                        	<div class="form-row">
+		                        		 <div class="form-group col-md-4">
+		                        	         <label for="inputNome">Classe</label>
+		                                     <input type="text" class="form-control" id="inputNome" required="true" th:field="*{nome}" readonly="true"/>
+		                                 </div>
+			                        	 <div class="form-group col-md-8">
+			                        	 	<label for="inputAluno">Aluno</label>
+			                        	    <select class="form-control" id="inputAluno" th:field="*{descricao}">
+			                        	    	<option value="" disable>Escolha</option>
+												<option th:each="a : ${alunos}" th:value="${a[0]}" th:text="${a[1]}">Aluno</option>
+											</select>
+			                             </div>
+			                         </div>
+		                             <div class="form-row">
+		                              	<input type="hidden" id="id" th:field="*{id}" />
+		                               	<button class="btn btn-success" type="submit">Salvar</button>
+		                             </div>
+		                        </div>
+                        	</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	    </section>
+	</body>
+</html>		

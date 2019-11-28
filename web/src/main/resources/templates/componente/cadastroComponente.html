@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudo">
+	        <div id="content-wrapper">
+                <div class="container-fluid">
+                	<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardEscola">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Componentes</li>
+                        <li class="breadcrumb-item active">Cadastro de Componentes</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Informe os dados do Componente
+                    		<a th:href="@{/listarComponentes}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm  float-right">Ver componentes</a>
+                    	</p>
+                        <div class="card-body">
+                        	<form th:action="${componenteCurricular.id == null} ? @{/componente/cadastro} : @{/editarComponente}"
+                        		  th:object="${componenteCurricular}" method="POST">
+                        		<div class="form-row">
+                        			 <div class="form-group col-md-3">
+                                        <label for="inputNome">Nome do componente</label>
+                                        <input type="text" class="form-control" id="inputNome" required="true" th:field="*{nome}" />
+                                    </div>
+	                              	<div class="form-group col-md-3">
+	                                	<label for="inputTipoAvaliacao">Tipo de avaliação</label>
+	                          			<select id="inputTipoAvaliacao" class="form-control" required="true" th:field="*{tipoAvaliacao}">
+		                                    <option value="" selected>Escolha</option>
+		                                    <option value="Prova">Prova</option>
+		                                    <option value="Trabalho">Trabalho</option>
+		                                    <option value="Prova e trabalho">Prova e trabalho</option>
+		                                    <option value="Conceito">Conceito</option>
+	                                  	</select>
+	                              	</div>
+	                              	<div class="form-group col-md-3">
+                                        <label for="inputNome">Média para aprovação</label>
+                                        <input type="text" class="form-control" id="inputNome" required="true" th:field="*{mediaAprovacao}" maxlength="2"/>
+                                    </div>
+	                              	<div class="form-group col-md-3">
+	                          			<label for="inputCargaHoraria">Carga horária</label>
+	                                	<input type="text" class="carga form-control" id="inputCargaHoraria" required="true" th:field="*{cargaHoraria}"/>
+	                          		</div>
+	                          	</div>
+                                <div class="form-row">
+                                	<input type="hidden" id="id" th:field="*{id}" />
+                                	<button class="btn btn-primary" type="submit">Salvar</button>
+                                </div>
+                        	</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	    </section>
+	</body>
+</html>		

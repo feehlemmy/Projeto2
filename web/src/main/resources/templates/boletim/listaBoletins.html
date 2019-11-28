@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudo">
+			<div id="content-wrapper">
+				<div class="container-fluid">
+					<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardEscola">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Boletim</li>
+                        <li class="breadcrumb-item active">Lista dos Boletins</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Lista dos modelos de boletim da escola
+                    		<a th:href="@{/getCriarBoletim}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm  float-right">Criar boletim</a>
+                    	</p>
+                        <div class="card-body">
+				            <div class="table-responsive">
+				                <table class="table table-striped table-hover table-sm">
+				                    <thead>
+				                    <tr>
+				                        <th>#</th>
+				                        <th>Classe</th>
+				                        <th>Individual gerado</th>
+				                        <th>Ações</th>
+				                    </tr>
+				                    </thead>
+				                    <tbody>
+					                    <tr th:each="b : ${boletins}">
+					                        <td th:text="${b[0]}">1</td>
+					                        <td th:text="${b[1]}">Classe</td>
+					                        <td th:text="${b[4]}">Individual</td>
+  					                        <td colspan="2">
+					                            <a class="btn btn-info btn-sm" th:href="@{/editarBoletim/{id} (id=${b[0]})}" role="button" data-toggle="tooltip" data-placement="left" title="Editar">
+					                                <i class="fas fa-pen"></i>
+					                            </a>
+					                            <a class="btn btn-success btn-sm" th:href="@{/adicionarComponentes/{id} (id=${b[0]})}" role="button" data-toggle="tooltip" data-placement="left" title="Adicionar componentes">
+			                                		<i class="fas fa-plus-square"></i>
+			                            		</a>
+			                            		<a class="btn btn-warning btn-sm" th:href="@{/listarComponentes/{id} (id=${b[0]})}" role="button" data-toggle="tooltip" data-placement="left" title="Ver componentes">
+			                                		<i class="fas fa-list-alt"></i>
+			                            		</a>
+			                            		<a class="btn btn-primary btn-sm" th:href="@{/aplicarBoletins/{id} (id=${b[0]})}" role="button" data-toggle="tooltip" data-placement="left" title="Aplicar boletim">
+			                                		<i class="fas fa-caret-square-right"></i>
+			                            		</a>
+					                            <button th:id="${ 'btn_boletins/excluir/' + b[0]}" type="button" class="btn btn-danger btn-sm"
+			                            			data-toggle="modal" data-target="#removerBoletimModal">
+			                            			<i class="fas fa-trash-alt"></i>
+			                            		</button>
+					                        </td>
+					                    </tr>
+				                    </tbody>
+				                </table>
+				            </div>
+                        </div>
+                	</div>
+				</div>
+			</div>
+	    </section>
+	</body>
+</html>	

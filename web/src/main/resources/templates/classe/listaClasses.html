@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudo">
+			<div id="content-wrapper">
+				<div class="container-fluid">
+					<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardEscola">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Classes</li>
+                        <li class="breadcrumb-item active">Listagem de Classes</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Lista das classes nesta escola
+                    		<a th:href="@{/cadastrarClasse}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm  float-right">Cadastrar classes</a>
+                    	</p>
+                        <div class="card-body">
+				            <div class="table-responsive">
+				                <table class="table table-striped table-hover table-sm">
+				                    <thead>
+				                    <tr>
+				                        <th>#</th>
+				                        <th>Nome</th>
+				                        <th>Ano</th>
+				                        <th>Ano Letivo</th>
+				                        <th>Turno</th>
+				                        <th>Ações</th>
+				                    </tr>
+				                    </thead>
+				                    <tbody>
+					                    <tr th:each="c : ${classes}">
+					                        <td th:text="${c[0]}">1</td>
+					                        <td th:text="${c[1]}">Nome</td>
+					                        <td th:text="${c[2]}">Ano</td>
+					                        <td th:text="${c[3]}">Ano Letivo</td>
+					                        <td th:text="${c[4]}">Turno</td>
+					                        <td colspan="2">
+					                            <a class="btn btn-info btn-sm" th:href="@{/editarClasse/{id} (id=${c[0]})}" role="button" data-toggle="tooltip" data-placement="left" title="Editar">
+					                                <i class="fas fa-pen"></i>
+					                            </a>
+					                            <a class="btn btn-success btn-sm" th:href="@{/adicionarAlunosClasse/{id} (id=${c[0]})}" role="button" data-toggle="tooltip" data-placement="left" title="Adicionar alunos">
+			                                		<i class="fas fa-plus-square"></i>
+			                            		</a>
+			                            		<a class="btn btn-warning btn-sm" th:href="@{/listarAlunosClasse/{id} (id=${c[0]})}" role="button" data-toggle="tooltip" data-placement="left" title="Ver alunos">
+			                                		<i class="fas fa-list-alt"></i>
+			                            		</a>
+					                            <button th:id="${ 'btn_classes/excluir/' + c[0]}" type="button" class="btn btn-danger btn-sm"
+			                            			data-toggle="modal" data-target="#excluirModal">
+			                            			<i class="fas fa-trash-alt"></i>
+			                            		</button>
+					                        </td>
+					                    </tr>
+				                    </tbody>
+				                </table>
+				            </div>
+                        </div>
+                	</div>
+				</div>
+			</div>
+	    </section>
+	</body>
+</html>	

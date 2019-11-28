@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudo">
+			<div id="content-wrapper">
+				<div class="container-fluid">
+					<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardEscola">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Ajuda</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Dicas úteis</p>
+                        <div class="card-body">
+				            <div class="table-responsive">
+				                <div class="accordion" id="accordionExample">
+				                	<div class="card">
+				                		<div class="card-header" id="headingOne">
+	                                        <h5 class="mb-0">
+	                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	                                                Como funciona
+	                                            </button>
+	                                        </h5>
+	                                    </div>
+	                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+	                                        <div class="card-body">
+	                                            <p>Antes de mais nada, é necessário cadastrar os professores de sua escola.</p>
+	                                            <p>Logo após cadastrar os professores, você deve cadastrar as classes de sua escola, sendo classificadas do <strong>1º ao 5º ano</strong>.
+	                                            	Vale ressaltar que é necessário ter professores cadastrados para realizar o cadastro de uma classe, pois neste momento será necessário atribuí-la a um professor.</p>
+	                                            <p>Uma vez que os professores e classes já estiverem cadastrados, você deverá cadastrar os <strong>alunos da escola</strong>, já os atribuindo para as classes anteriormente criadas. 
+	                                                Logo após isso, você deverá criar os <strong>componentes curriculares</strong>, pois será através deles que as notas e frequência serão atribuídas aos alunos.</p>
+	                                        </div>
+	                                    </div>
+				                	</div>
+			                		<div class="card">
+				                		<div class="card-header" id="headingTwo">
+	                                        <h5 class="mb-0">
+	                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+	                                                Como cadastrar professores
+	                                            </button>
+	                                        </h5>
+	                                    </div>
+	                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+	                                        <div class="card-body">
+	                                            <p>Antes de mais nada, é necessário cadastrar os professores de sua escola.</p>
+	                                            <p>Clique na opção <strong>Professores</strong> no menu lateral, que exibirá um menu onde você poderá selecionar a opção <strong>Cadastrar professor</strong>.</p>
+	                                            <p>Uma vez que você seguiu os itens acima, será exibido um formulário (que deve ser totalmente preenchido) para cadastrar um professor. 
+	                                                Quando terminar de preencher e enviar, o professor que você cadastrou irá aparecerá na opção <strong>Listar professores</strong>, também no menu de Professorees.</p>
+	                                        </div>
+	                                    </div>
+				                	</div>
+				                	<div class="card">
+				                		<div class="card-header" id="headingThree">
+	                                        <h5 class="mb-0">
+	                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+	                                                Como cadastrar classes
+	                                            </button>
+	                                        </h5>
+	                                    </div>
+	                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+	                                        <div class="card-body">
+	                                            <p>Para cadastrar uma classe, é necessário ter algum professor cadastrado.</p>
+	                                            <p>Se você já possuir professores cadastrados em sua escola, basta navegar até a opção <strong>Classes</strong> e clicar na opção <strong>Cadastrar classe</strong>.
+	                                            	Já nesta opção, será exibido um formulário que deve ser completamente preenchido.</p>
+	                                            <p>Depois de cadastrar a classe, ela irá aparecer na opção <strong>Listar classes</strong>, também na opção de Classes.</p>
+	                                        </div>
+	                                    </div>
+				                	</div>
+				                	<div class="card">
+				                		<div class="card-header" id="headingFour">
+	                                        <h5 class="mb-0">
+	                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
+	                                                Como cadastrar componentes curriculares
+	                                            </button>
+	                                        </h5>
+	                                    </div>
+	                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+	                                        <div class="card-body">
+	                                            <p>Para cadastrar um componente curricular, basta navegar até o item <strong>Componentes</strong> no menu lateral e clica no item <strong>Cadastrar componente</strong>.</p>
+	                                            <p>Uma vez nessa guia, você terá um formulário que dever ser totalmente preenchido, de forma que após salvar, o componente poderá ser consultado na opção <strong>Listar componentes</strong>, também no item de Componentes.</p>
+	                                        </div>
+	                                    </div>
+				                	</div>
+				                	<div class="card">
+				                		<div class="card-header" id="headingFive">
+	                                        <h5 class="mb-0">
+	                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseTwo">
+	                                                Como cadastrar alunos
+	                                            </button>
+	                                        </h5>
+	                                    </div>
+	                                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+	                                        <div class="card-body">
+	                                            <p>Para cadastrar um aluno, basta navegar até o item <strong>Alunos</strong> no menu lateral e clica no item <strong>Cadastrar aluno</strong>.</p>
+	                                            <p>Uma vez nessa guia, você terá um formulário que dever ser totalmente preenchido, de forma que após salvar, o aluno poderá ser consultado na opção <strong>Listar alunos</strong>, também no item de Alunos.</p>
+	                                        </div>
+	                                    </div>
+				                	</div>
+				                	<div class="card">
+				                		<div class="card-header" id="headingSix">
+	                                        <h5 class="mb-0">
+	                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseTwo">
+	                                                Não encontrou o que procurava?
+	                                            </button>
+	                                        </h5>
+	                                    </div>
+	                                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+	                                        <div class="card-body">
+	                                            <p>Fique tranquilo, preencha o formulário abaixo com a sua dúvida.</p>
+	                                            <p>Este formulário será enviado diretamente para nós, que vamos responder o mais rápido possível no e-mail que você usou para se cadastrar.</p>
+	                                            <div class="container">
+	                                            	<form th:action="@{/escola/enviarDuvida}" th:object="${email}" method="POST">
+							                    		<div class="form-group">
+							                    			<label for="inputDuvida">Título</label>
+							                    			<input type="text" class="form-control input-lg" id="inputDuvida" placeholder="Escreva um título para sua dúvida" required th:field="*{tituloDuvida}">
+							                    		</div>
+							                    		<div class="form-group">
+							                    			<label for="duvida">Descrição</label>
+									                        <textarea name="duvida" id="duvida" class="form-control input-lg" placeholder="Descreva sua dúvida aqui" rows="5" cols="20" required th:field="*{descricaoDuvida}"></textarea>
+									                    </div>
+									                    <div class="form-group">
+									                        <button type="submit" id="btn-confirm" class="btn btn-primary">Enviar</button>
+									                    </div>
+							                    	</form>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+				                	</div>
+				                </div>
+				            </div>
+                        </div>
+                	</div>
+				</div>
+			</div>
+	    </section>
+	</body>
+</html>	

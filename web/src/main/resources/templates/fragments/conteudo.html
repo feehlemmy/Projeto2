@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div class="container-fluid" layout:fragment="conteudo">
+		<!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">Painel de controle</h1>
+			<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Gerar relatório</a>
+		</div>
+
+		<!-- Content Row -->
+		<div class="row">
+			<!-- Earnings (Monthly) Card Example -->
+			<div class="col-xl-3 col-md-6 mb-4">
+				<div class="card border-left-primary shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Calendário</div>
+								<a th:href="@{/getCalendarioEscola}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Consultar</a>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-calendar fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Earnings (Monthly) Card Example -->
+			<div class="col-xl-3 col-md-6 mb-4">
+				<div class="card border-left-success shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-success text-uppercase mb-1">Professores</div>
+								<a th:href="@{/listarProfessores}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm">Consultar</a>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-chalkboard-teacher fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Earnings (Monthly) Card Example -->
+			<div class="col-xl-3 col-md-6 mb-4">
+				<div class="card border-left-danger shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Classes</div>
+								<a th:href="@{/listarClasses}" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm">Consultar</a>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-users fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Earnings (Monthly) Card Example -->
+			<div class="col-xl-3 col-md-6 mb-4">
+				<div class="card border-left-warning shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Avisos</div>
+								<a th:href="@{/getAvisosEscola}" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">Consultar</a>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-envelope-open-text fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Content Row -->
+		<div class="row">
+			<!-- Content Column -->
+			<div class="col-lg-6 mb-4">
+
+				<!-- Project Card Example -->
+				<div class="card shadow mb-4">
+					<div class="card-header py-3">
+						<h6 class="m-0 font-weight-bold text-primary">Classes em aula no momento</h6>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+			                <table class="table table-striped table-hover table-sm">
+			                    <thead>
+			                    <tr>
+			                        <th>#</th>
+			                        <th>Nome</th>
+			                        <th>Ano</th>
+			                    </tr>
+			                    </thead>
+			                    <tbody>
+				                    <tr th:each="c : ${classes}">
+				                        <td th:text="${c[0]}">1</td>
+				                        <td th:text="${c[1]}">Nome</td>
+				                        <td th:text="${c[2]}">Ano</td>
+				                    </tr>
+			                    </tbody>
+			                </table>
+			            </div>
+						<a rel="nofollow" th:href="@{/listarClasses}">Ver todas as classes &rarr;</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-6 mb-4">
+				<!-- Illustrations -->
+				<div class="card shadow mb-4">
+					<div class="card-header py-3">
+						<h6 class="m-0 font-weight-bold text-primary">Próximos eventos</h6>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+			                <table class="table table-striped table-hover table-sm">
+			                    <thead>
+			                    <tr>
+			                        <th>#</th>
+			                        <th>Título</th>
+			                        <th>Horário</th>
+			                    </tr>
+			                    </thead>
+			                    <tbody>
+			                    	<tr th:each="e : ${eventos}">
+				                        <td th:text="${e[0]}">1</td>
+				                        <td th:text="${e[4]}">Título</td>
+				                        <td th:text="${e[5]}">Horário</td>
+				                    </tr>
+			                    </tbody>
+			                </table>
+			            </div>
+						<a rel="nofollow" th:href="@{/getCalendarioEscola}">Ver todos os eventos &rarr;</a>
+					</div>
+				</div>
+
+				<!-- Approach -->
+				<div class="card shadow mb-4">
+					<div class="card-header py-3">
+						<h6 class="m-0 font-weight-bold text-primary">Avisos</h6>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+			                <table class="table table-striped table-hover table-sm">
+			                    <thead>
+			                    <tr>
+			                        <th>#</th>
+			                        <th>Título</th>
+			                        <th>Ano Classe</th>
+			                    </tr>
+			                    </thead>
+			                    <tbody>
+			                    	<tr th:each="a : ${avisos}">
+				                        <td th:text="${a[0]}">1</td>
+				                        <td th:text="${a[2]}">Nome</td>
+				                        <td th:text="${a[1]}">Ano</td>
+				                    </tr>
+			                    </tbody>
+			                </table>
+			            </div>
+						<a rel="nofollow" th:href="@{/getAvisosEscola}">Ver todos os avisos &rarr;</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- /.container-fluid -->
+	</div>
+</body>
+</html>

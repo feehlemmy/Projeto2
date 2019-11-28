@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport"
+			content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no">
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+		<link th:href="@{/css/all.min.css}" rel="stylesheet" />
+		<link th:href="@{/css/sb-admin.css}" rel="stylesheet" />
+        <!-- Scripts necessários para as máscaras -->
+		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{/js/jquery.mask.js}"></script>
+        <title>Complete seu cadastro</title>
+    </head>
+    <body>
+        <div class="container align-self-center d-flex justify-content-center">
+            <div class="container-fluid">
+                <div class="card mx-auto mt-5">
+                	<div th:replace="fragments/alert"></div>
+                    <div class="card-header">Antes de continuar, complete seu cadastro.</div>
+                    <div class="card-body">
+                        <form th:action="@{/escola/completarPerfil}" th:object="${escola}" method="POST">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputNome">Código MEC</label>
+                                    <input type="text" class="form-control" id="inputCodigo" minlength="8" maxlength="8" required="true" th:field="*{codigoMec}"/>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputTelefone">Telefone</label>
+                                    <input type="text" class="telefone form-control" id="inputTelefone" placeholder="Telefone" name="telefone" required="true" th:field="*{telefone}"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress">Endereço</label>
+                                <input type="text" class="form-control" id="inputAddress" placeholder="Seu Endereço, 1234, Seu Bairro" required="true" th:field="*{endereco}"/>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                               		<label for="estado">UF</label>
+                               		<select id="estado" class="form-control" onchange="buscaCidades(this.value)" th:field="*{uf}">
+                                    	<option value="" disabled>Escolha</option>
+                                        <option value="AC">Acre - AC</option>
+                                        <option value="AL">Alagoas - AL</option>
+                                        <option value="AP">Amapá - AP</option>
+                                        <option value="AM">Amazonas - AM</option>
+                                        <option value="BA">Bahia - BA</option>
+                                        <option value="CE">Ceará - CE</option>
+                                        <option value="DF">Distrito Federal - DF</option>
+                                        <option value="ES">Espírito Santo - ES</option>
+                                        <option value="GO">Goiás - GO</option>
+                                        <option value="MA">Maranhão - MA</option>
+                                        <option value="MT">Mato Grosso - MT</option>
+                                        <option value="MS">Mato Grosso do Sul - MS</option>
+                                        <option value="MG">Minas Gerais - MG</option>
+                                        <option value="PA">Pará - PA</option>
+                                        <option value="PB">Paraíba - PB</option>
+                                        <option value="PR">Paraná - PR</option>
+                                        <option value="PE">Pernambuco - PE</option>
+                                        <option value="PI">Piauí - PI</option>
+                                        <option value="RJ">Rio de Janeiro - RJ</option>
+                                        <option value="RN">Rio Grande do Norte - RN</option>
+                                        <option value="RS">Rio Grande do Sul - RS</option>
+                                        <option value="RO">Rondônia - RO</option>
+                                        <option value="RR">Roraima - RR</option>
+                                        <option value="SC">Santa Catarina - SC</option>
+                                        <option value="SP">São Paulo - SP</option>
+                                        <option value="SE">Segipe - SE</option>
+                                        <option value="TO">Tocantins - TO</option>
+                                	</select>
+                               	</div>
+                                <div class="form-group col-md-6">
+                                     <label for="cidade">Município</label>
+                                     <select id="cidade" name="cidade" class="form-control" th:field="*{municipio}"></select>
+                                 </div>
+                                 <div class="form-group col-md-2">
+                                     <label for="inputCEP">CEP</label>
+                                     <input type="text" class="cep form-control" id="inputCEP" name="cep" required="true" th:field="*{cep}"/>
+                                 </div>
+                            </div>
+                            <button class="btn btn-primary" type="submit">Confirmar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<script th:src="@{/js/bootstrap.bundle.js}"></script>
+	
+		<!-- Core plugin JavaScript-->
+		<script th:src="@{/js/jquery.easing.min.js}"></script>
+	
+		<!-- Custom scripts for all pages-->
+		<script th:src="@{/js/sb-admin-2.min.js}"></script>
+		<script th:src="@{/js/all-2.min.js}"></script>                 
+        <!-- Inclusão dos arquivos necessários para o Bootstrap -->
+        <script th:src="@{/js/cidadesAPI.js}"></script>
+        <script>
+	        $(document).ready(function () {
+	            $('.cpf').mask('000.000.000-00');
+	            $('.telefone').mask('(00) 00000-0000');
+	            $('.cep').mask('00.000-000');
+	            $('.ano').mask('0000');
+	        });
+        </script>
+    </body>
+</html>

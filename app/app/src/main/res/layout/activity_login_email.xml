@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/activity_login_email"
+    android:background="@drawable/bg_header">
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_welcome"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:text="@string/lbl_info_login_email"
+        android:textColor="@color/colorInputs"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/email_login"
+        style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="152dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/email_login"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/colorInputs"
+        android:textColorHint="@color/colorInputs"
+        tools:targetApi="o" />
+
+    <Button
+        android:id="@+id/btn_send_email_recover_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/email_login"
+        android:layout_centerVertical="true"
+        android:text="@string/btn_next"
+        android:background="@color/colorPrimary"
+        android:textColor="#fff"
+        android:textSize="15sp" />
+
+</RelativeLayout>

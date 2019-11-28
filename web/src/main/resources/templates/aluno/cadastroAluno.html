@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudo">
+	        <div id="content-wrapper">
+                <div class="container-fluid">
+                	<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardEscola">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Alunos</li>
+                        <li class="breadcrumb-item active">Cadastro de Aluno</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Informe os dados do aluno
+                    		<a th:href="@{/listarAlunos}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm float-right">Ver alunos</a>
+                    		<input type='button' id='btn' class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm float-right" value='Imprimir' onclick='printDiv();'>
+                    	</p>
+                        <div class="card-body" id="DivIdToPrint">
+                        	<form th:action="${aluno.id == null} ? @{/aluno/cadastro} : @{/editarAluno}"
+                        		  th:object="${aluno}" method="POST">
+                        		<div class="form-row">
+                        			 <div class="form-group col-md-6">
+                                        <label for="inputNome">Nome</label>
+                                       	<input type="text" class="form-control" id="inputNome" required="true" th:field="*{nome}" />
+                                       	<input type="hidden" th:field="*{pessoaId}" />
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputDataNascimento">Código gerado</label>
+                                        <input type="text" class="form-control" id="inputCodigo" th:field="*{codigoGeradoEscola}" readonly/>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputDataNascimento">Data de nascimento</label>
+                                        <input type="date" class="form-control" placeholder="13/11/1994" id="inputDataNascimento" required="true" th:field="*{dataNascimento}">
+                                    </div>
+                        		</div>
+                        		<div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label for="inputCPF">CPF do aluno</label>
+                                        <input type="text" class="cpf form-control " id="inputCPF" placeholder="CPF do aluno" required="true" th:field="*{cpf}"/>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputCPFResponsavel">CPF do responsável</label>
+                                        <input type="text" class="cpf form-control " id="inputCPFResponsavel" placeholder="CPF do responsável" required="true" th:field="*{cpfResponsavel}"/>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputMatricula">Matrícula</label>
+                                        <input type="text" class="form-control " id="inputMatricula" placeholder="Matrícula do aluno" required="true" th:field="*{matricula}"/>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputDataMatricula">Data da matrícula</label>
+                                        <input type="date" class="form-control" placeholder="13/11/1994" id="inputDataMatricula" required="true" th:field="*{dataMatricula}">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                	<div class="form-group col-md-6">
+                                		<label for="inputNomeMae">Nome da mãe</label>
+                                        <input type="text" class="form-control" id="inputNome" required="true" th:field="*{nomeMae}" />
+                                	</div>
+                                	<div class="form-group col-md-6">
+                                		<label for="inputNomePai">Nome do pai</label>
+                                        <input type="text" class="form-control" id="inputNome" th:field="*{nomePai}" />
+                                	</div>
+                                </div>
+                                <div class="form-row">
+                                	<div class="form-group col-md-4">
+                                		<label for="situacao">Situação do aluno</label>
+                                		<select id="situacao" class="form-control" th:field="*{situacao}">
+                                            <option value="" selected>Escolha</option>
+                                            <option value="Ativo">Ativo</option>
+                                            <option value="Inativo">Inativo</option>
+                                        </select>
+                                	</div>
+                                	<div class="form-group col-md-8">
+                                        <label for="inputResponsável">Responsável</label>
+                                        <input type="text" class="form-control" id="inputResponsável" placeholder="Nome do responsável" name="responsavel" required="true" th:field="*{nomeResponsavel}"/>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                	<input type="hidden" id="id" th:field="*{id}" />
+                                	<button class="btn btn-primary" type="submit">Salvar</button>
+                                </div>
+                        	</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+	           function printDiv() {
+	        	   $('#DivIdToPrint').printThis({
+	               	importCSS: true,            // import parent page css
+	                   importStyle: false,         // import style tags
+	                   printContainer: true
+	               });
+	           }
+            </script>
+	    </section>
+	</body>
+</html>		

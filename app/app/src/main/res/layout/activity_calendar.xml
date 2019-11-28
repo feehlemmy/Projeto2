@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_calendar">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/lbl_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/calendar"
+        android:textColor="#4566DB"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_wrapHeight="85"
+        tools:layout_conversion_wrapWidth="335" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/lbl_calendar2"
+        android:layout_width="321dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="72dp"
+        android:text="@string/calendar_description"
+        android:textColor="#4566DB"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        tools:layout_conversion_wrapHeight="85"
+        tools:layout_conversion_wrapWidth="335" />
+
+    <com.skyhope.eventcalenderlibrary.CalenderEvent
+        android:id="@+id/calendarView"
+        android:layout_width="255dp"
+        android:layout_height="367dp"
+        android:layout_marginTop="72dp"
+        android:maxDate="31/01/2020"
+        android:minDate="01/01/2018"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_calendar" />
+</androidx.constraintlayout.widget.ConstraintLayout>

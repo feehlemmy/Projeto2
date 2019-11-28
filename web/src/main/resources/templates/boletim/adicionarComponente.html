@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+	<head>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudo">
+	        <div id="content-wrapper">
+                <div class="container-fluid">
+                	<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardEscola">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Boletim</li>
+                        <li class="breadcrumb-item active">Adicionar componentes</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Selecione o componente para adicionar ao boletim
+                    		<a th:href="@{/listarComponentes}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm  float-right">Ver componentes</a>
+                    	</p>
+                        <div class="card-body">
+                        	<form th:action="@{/addComponenteBoletim}" th:object="${boletimComponente}" method="POST">
+                        		<div>
+		                        	<div class="form-row">
+		                        		 <div class="form-group col-md-4">
+		                        	         <label for="inputNome">Classe</label>
+		                                     <input type="text" class="form-control" id="inputNome" th:value="${classe.nome}" readonly="true"/>
+		                                     <input type="hidden" class="form-control" id="inputBoletimId" required="true" th:field="*{boletimId}" />
+		                                 </div>
+			                        	 <div class="form-group col-md-8">
+			                        	 	<label for="inputAluno">Componente</label>
+			                        	    <select class="form-control" id="inputAluno" th:field="*{componenteId}">
+			                        	    	<option value="" disable>Escolha</option>
+												<option th:each="c : ${componentes}" th:value="${c[0]}" th:text="${c[1]}">Componente</option>
+											</select>
+			                             </div>
+			                         </div>
+		                             <div class="form-row">
+		                              	<input type="hidden" id="id" th:field="*{id}" />
+		                               	<button class="btn btn-success" type="submit">Salvar</button>
+		                             </div>
+		                        </div>
+                        	</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	    </section>
+	</body>
+</html>		

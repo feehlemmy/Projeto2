@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboardProfessor}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudoProfessor">
+	        <div id="content-wrapper">
+                <div class="container-fluid">
+                	<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardProfessor">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Alunos</li>
+                        <li class="breadcrumb-item active">Dados do Aluno</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Dados do aluno
+                    		<a th:href="@{/getAlunosProfessor}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm float-right">Ver alunos</a>
+                    	</p>
+                        <div class="card-body">
+                        	<form>
+                        		<div class="form-row">
+                        			 <div class="form-group col-md-6">
+                                        <label for="inputNome">Nome aluno</label>
+                                       	<input type="text" class="form-control" id="inputNome" th:value="${aluno.nome}" readonly/>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputDataNascimento">Nome Responsável</label>
+                                        <input type="text" class="form-control" id="inputCodigo" th:value="${responsavel.nome}" readonly/>
+                                    </div>
+                        		</div>
+                        		<div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label for="inputCPF">Nascimento</label>
+                                        <input type="text" class="form-control " id="inputCPF" placeholder="CPF do aluno" th:value="${aluno.dataNascimento}" readonly/>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputCPFResponsavel">Data matrícula</label>
+                                        <input type="text" class="form-control " id="inputCPFResponsavel" placeholder="CPF do responsável" th:value="${aluno.dataMatricula}" readonly/>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputMatricula">Matrícula</label>
+                                        <input type="text" class="form-control " id="inputMatricula" placeholder="Matrícula do aluno" th:value="${aluno.Matricula}" readonly/>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputDataMatricula">Situação</label>
+                                        <input type="date" class="form-control" placeholder="13/11/1994" id="inputDataMatricula" th:value="${aluno.Situacao}" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                	<div class="form-group col-md-6">
+                                		<label for="inputNomeMae">Telefone Responsável</label>
+                                        <input type="text" class="form-control" id="inputNome" th:value="${responsavel.telefone}" readonly/>
+                                	</div>
+                                	<div class="form-group col-md-6">
+                                		<label for="inputNomePai">E-mail Responsável</label>
+                                        <input type="text" class="form-control" id="inputNome" th:value="${responsavel.email}" readonly/>
+                                	</div>
+                                </div>
+                                <div class="form-row">
+                                	<div class="form-group col-md-6">
+                                		<label for="inputNomePai">Endereço Responsável</label>
+                                        <input type="text" class="form-control" id="inputNome" th:value="${responsavel.endereco}" readonly/>
+                                	</div>
+                                	<div class="form-group col-md-6">
+                                        <label for="inputNomePai">Município Responsável</label>
+                                        <input type="text" class="form-control" id="inputNome" th:value="${responsavel.municipio}" readonly/>
+                                    </div>
+                                </div>
+                        	</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	    </section>
+	</body>
+</html>		

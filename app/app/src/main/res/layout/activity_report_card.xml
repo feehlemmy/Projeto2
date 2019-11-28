@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReportCardActivity">
+
+    <TextView
+        android:id="@+id/lbl_boletim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/lbl_boletim"
+        android:textAlignment="center"
+        android:textColor="#3F51B5"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lbl_nome_boletim"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:textAlignment="center"
+        android:textColor="#3F51B5"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_boletim"
+        tools:text="@string/lbl_nome_aluno" />
+
+    <TextView
+        android:id="@+id/lbl_matricula_aluno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/lbl_matricula"
+        android:textColor="#3F51B5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_nome_boletim" />
+
+    <TextView
+        android:id="@+id/lbl_situacao_aluno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="234dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/lbl_situacao"
+        android:textColor="#3F51B5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lbl_matricula_aluno"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_nome_boletim" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/lbl_nome_componente"
+        android:textColor="#3F51B5"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_matricula_aluno" />
+
+    <TextView
+        android:id="@+id/lbl_nota_componente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/lbl_nota_componente"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#3F51B5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_situacao_aluno" />
+
+    <TextView
+        android:id="@+id/lbl_media_componente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="135dp"
+        android:text="@string/lbl_media_componente"
+        android:textColor="#3F51B5"
+        app:layout_constraintEnd_toStartOf="@+id/lbl_nota_componente"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_nome_boletim" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_componentes"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_media_componente"
+        tools:listitem="@layout/list_item_report"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

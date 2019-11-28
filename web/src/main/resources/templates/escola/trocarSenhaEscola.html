@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudo">
+	        <div id="content-wrapper">
+                <div class="container-fluid">
+                	<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardEscola">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardEscola">Perfil</a>
+                        </li>
+                        <li class="breadcrumb-item active">Atualizar senha</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Preencha os dados abaixo para alterar sua senha</p>
+                        <div class="card-body">
+                        	<form class="user" th:action="@{/escola/alterarSenha}" th:object="${escola}" method="POST">
+                        		<div class="form-group row">
+									<div class="col-sm-4">
+										<label for="inputSenhaAtual">Informe sua senha atual</label>
+										<input type="password" class="form-control"
+											id="inputSenhaAtual" placeholder="Senha atual" required="true" th:field="*{nome}" minlength="8"/>
+									</div>
+									<div class="col-sm-4">
+										<label for="inputNovaSenha">Informe a nova senha</label>
+										<input type="password" class="form-control"
+											id="inputNovaSenha" placeholder="Nova senha" required="true" th:field="*{senha}" minlength="8"/>
+									</div>
+									<div class="col-sm-4">
+										<label for="inputRepeatSenha">Confirme sua senha</label>
+										<input type="password" class="form-control"
+											id="inputRepeatSenha" placeholder="Repita a senha" required="true" th:field="*{confirmacao}" minlength="8"/>
+									</div>
+								</div>
+                                <div class="form-row">
+                                	<input type="hidden" id="id" th:field="*{id}" />
+                                	<button class="btn btn-primary" type="submit">Salvar</button>
+                                </div>
+                        	</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	    </section>
+	</body>
+</html>		

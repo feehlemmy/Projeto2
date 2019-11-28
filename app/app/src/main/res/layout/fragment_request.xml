@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_request"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="33dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="62dp"
+        android:text="@string/text_request"
+        android:textColor="#4566DB"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/request_spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_wrapHeight="79"
+        tools:layout_conversion_wrapWidth="192" />
+
+    <EditText
+        android:id="@+id/request_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="46dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/request_date"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp"
+        android:typeface="normal"
+        app:layout_constraintBottom_toTopOf="@+id/request_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/request_spinner"
+        tools:targetApi="o" />
+
+    <EditText
+        android:id="@+id/request_input"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/request_input"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp"
+        android:typeface="normal"
+        app:layout_constraintBottom_toTopOf="@+id/send_request"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/request_date"
+        tools:targetApi="o" />
+
+    <Button
+        android:id="@+id/send_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="75dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/request_btn"
+        android:textColor="#ffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/request_input" />
+
+    <Spinner
+        android:id="@+id/request_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="73dp"
+        android:scrollbarSize="2dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toTopOf="@+id/request_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
+
+    <Spinner
+        android:id="@+id/spinner_tipo_requisicao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="82dp"
+        app:layout_constraintBottom_toTopOf="@+id/request_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.848"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/request_spinner" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no">
+		<title>EduQ</title>
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" id="bootstrap-css" />
+		<link th:href="@{/css/all.min.css}" rel="stylesheet" />
+		<link th:href="@{/css/sb-admin.css}" rel="stylesheet" />
+		<link th:href="@{/css/app.css}" rel="stylesheet" />
+		
+	</head>
+	<body>
+		<!-- Menu -->
+        <nav id="menu-topo" class="navbar nav-edit navbar-expand-lg navbar-light fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top"></a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#talk">Fale conosco</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="#about">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+							<div class="btn-group dropleft">
+								<button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							    	Opções
+							  	</button>
+							  	<div class="dropdown-menu">
+							    	<!-- Dropdown menu links -->
+							    	<a class="dropdown-item" href="/entrar">Autenticação - Escola</a>
+							    	<a class="dropdown-item" href="/entrarProfessor">Autenticação - Professor</a>
+							    	<div class="dropdown-divider"></div>
+							    	<a class="dropdown-item" href="/cadastrarEscola">Cadastro - Escola</a>
+							  	</div>
+							</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav> <!-- Fim do Menu -->
+        
+        <header class="container_principal">
+            <div class="container-fluid container-background">
+                <div class="row align-img justify-content-center">
+                	<div class="">
+                		<div class="col-lg-08">
+<!-- 	                    	<div class="row"> -->
+<!-- 	                    		<img alt="eduq" class="d-block mx-auto mb-4" src="../resources/static/img/Title-EduQ.png" th:src="@{/img/Title-EduQ.png}" width="100" height="80" /> -->
+<!-- 	                    	</div> -->
+							<div th:replace="fragments/alert"></div>
+	                        <div class="row">
+	                        	<img alt="logo" class="d-block mx-auto mb-3" src="../resources/static/img/eduqLogo02.png" th:src="@{/img/eduqLogo02.png}" width="700" height="600" />
+	                        </div>
+<!-- 	                    	<div class="row"> -->
+<!-- 	                    		<img alt="student" class="d-block mx-auto mb-4" src="../resources/static/img/Student-Life.png" th:src="@{/img/Student-Life.png}" height="120" /> -->
+<!-- 	                    	</div> -->
+	                    </div>
+                	</div>
+                </div>
+            </div>
+        </header>
+        
+        <hr>
+        
+        
+        <!-- SessÃ£o Sobre -->
+        <section class="services pt-100 pb-50" id="about">
+         	<div class="container">
+            	<div class="row">
+               		<div class="col-xl-6 mx-auto text-center">
+                  		<div class="section-title mb-100">
+                     		<p>Sobre Nós</p>
+                     		<h4>O que fazemos</h4>
+                  		</div>
+               		</div>
+            	</div>
+	            <div class="row">
+	               	<div class="col-lg-4 col-md-6">
+	                  	<!-- Single Service -->
+	                  	<div class="single-service">         
+						    <div>
+						        <svg id="icon-globe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+						            <g class="globe1">
+						                <path fill="none" d="M0 0h24v24H0z" />
+						                <path
+						                    fill="#30ADF2" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-2.29-2.333A17.9 17.9 0 0 1 8.027 13H4.062a8.008 8.008 0 0 0 5.648 6.667zM10.03 13c.151 2.439.848 4.73 1.97 6.752A15.905 15.905 0 0 0 13.97 13h-3.94zm9.908 0h-3.965a17.9 17.9 0 0 1-1.683 6.667A8.008 8.008 0 0 0 19.938 13zM4.062 11h3.965A17.9 17.9 0 0 1 9.71 4.333 8.008 8.008 0 0 0 4.062 11zm5.969 0h3.938A15.905 15.905 0 0 0 12 4.248 15.905 15.905 0 0 0 10.03 11zm4.259-6.667A17.9 17.9 0 0 1 15.973 11h3.965a8.008 8.008 0 0 0-5.648-6.667z" />
+						            </g>
+						        </svg>
+						    </div>
+	                     	<h4>Plataforma Web </h4>
+	                     	<p>Trabalhamos em uma plataforma web onde as escolas e professores podem fazer todo o gerenciamento dos alunos de forma centralizada.</p>
+	                  	</div>
+	               	</div>
+	               	<div class="col-lg-4 col-md-6">
+	                 	<!-- Single Service -->
+	                  	<div class="single-service">
+							<div>
+						        <svg version="1.1" id="icon-vibrate" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+							        width="612px" height="612px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
+					               
+					               <path fill="#30ADF2" d="M0,382.5h51v-153H0V382.5z M76.5,433.5h51v-255h-51V433.5z M561,229.5v153h51v-153H561z M484.5,433.5h51v-255h-51V433.5z
+					                        M420.75,76.5h-229.5c-20.4,0-38.25,17.85-38.25,38.25v382.5c0,20.4,17.85,38.25,38.25,38.25h229.5
+					                       c20.4,0,38.25-17.85,38.25-38.25v-382.5C459,94.35,441.15,76.5,420.75,76.5z M408,484.5H204v-357h204V484.5z"/>							
+								</svg>
+							</div>
+	                     	<h4>Aplicativo</h4>
+	                     	<p>Os responsáveis possuem um aplicativo onde podem acompanhar a vida estudantil dos alunos, suas notas, faltas, fazer pedidos para a escola e muito mais!</p>
+	                  	</div>
+	               </div>
+	               
+	               <div class="col-lg-4 col-md-6">
+	                  	<!-- Single Service -->
+	                  	<div class="single-service">
+	                    	<div>
+							    <svg id="icon-notification" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+							      <path fill="#30ADF2" d="M20.52 15.21l-1.8-1.81V8.94a6.86 6.86 0 0 0-5.82-6.88 6.74 6.74 0 0 0-7.62 6.67v4.67l-1.8 1.81A1.64 1.64 0 0 0 4.64 18H8v.34A3.84 3.84 0 0 0 12 22a3.84 3.84 0 0 0 4-3.66V18h3.36a1.64 1.64 0 0 0 1.16-2.79zM14 18.34A1.88 1.88 0 0 1 12 20a1.88 1.88 0 0 1-2-1.66V18h4zM5.51 16l1.18-1.18a2 2 0 0 0 .59-1.42V8.73A4.73 4.73 0 0 1 8.9 5.17 4.67 4.67 0 0 1 12.64 4a4.86 4.86 0 0 1 4.08 4.9v4.5a2 2 0 0 0 .58 1.42L18.49 16z" />
+							    </svg>
+							</div>
+	                     	<h4>Conectividade</h4>
+	                     	<p>A plataforma da escola e o aplicativo para os responsáveis trabalham de forma única, assim, sempre que a escola atualizar alguma informação o aplicativo recebe na hora!</p>
+	                  	</div>
+	               </div>
+	               
+	               <div class="col-lg-4 col-md-6">
+	                  	<!-- Single Service -->
+	                  	<div class="single-service">
+						    <div>
+						        <svg version="1.1" id="icon-shield" xmlns="http://www.w3.org/2000/svg"
+						        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 214.27 214.27"
+						        style="enable-background:new 0 0 214.27 214.27;" xml:space="preserve">
+						
+						       		<path fill="#30ADF2" class="shield-outer" d="M196.926,55.171c-0.11-5.785-0.215-11.25-0.215-16.537c0-4.142-3.357-7.5-7.5-7.5c-32.075,0-56.496-9.218-76.852-29.01
+						               		c-2.912-2.832-7.546-2.831-10.457,0c-20.354,19.792-44.771,29.01-76.844,29.01c-4.142,0-7.5,3.358-7.5,7.5
+						               		c0,5.288-0.104,10.755-0.215,16.541c-1.028,53.836-2.436,127.567,87.331,158.682c0.796,0.276,1.626,0.414,2.456,0.414
+						               		c0.83,0,1.661-0.138,2.456-0.414C199.36,182.741,197.954,109.008,196.926,55.171z M107.131,198.812
+						               		c-76.987-27.967-75.823-89.232-74.79-143.351c0.062-3.248,0.122-6.396,0.164-9.482c30.04-1.268,54.062-10.371,74.626-28.285
+						               		c20.566,17.914,44.592,27.018,74.634,28.285c0.042,3.085,0.102,6.231,0.164,9.477C182.961,109.577,184.124,170.844,107.131,198.812
+						               		z" />
+						        	<path fill="#000000" class="security-yes" d="M132.958,81.082l-36.199,36.197l-15.447-15.447c-2.929-2.928-7.678-2.928-10.606,0c-2.929,2.93-2.929,7.678,0,10.607
+						               		l20.75,20.75c1.464,1.464,3.384,2.196,5.303,2.196c1.919,0,3.839-0.732,5.303-2.196l41.501-41.5
+						               		c2.93-2.929,2.93-7.678,0.001-10.606C140.636,78.154,135.887,78.153,132.958,81.082z" />
+								</svg>
+						    </div>
+	                     	<h4>Segurança</h4>
+	                     	<p>Trabalhamos com os mais altos níveis de proteção e com isso os dados das escolas e dos alunos estão totalmente seguros.</p>
+	                  	</div>
+	               </div>
+	               
+	               <div class="col-lg-4 col-md-6">
+	                  	<!-- Single Service -->
+	                  	<div class="single-service">
+	                  		 <div>
+						        <svg id="icon-stopwatch" version="1.1" xmlns="http://www.w3.org/2000/svg"
+						        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 448 448"
+						        style="enable-background:new 0 0 448 448;" xml:space="preserve">
+						
+						        <rect fill="#30ADF2" x="160" y="0" width="128" height="42.667" />
+						        <rect   class="st-running" x="202.667" y="149.333" width="42.667" height="128" />
+						        <path fill="#30ADF2" d="M373.867,136.213l30.4-30.4c-9.173-10.987-19.2-21.013-30.187-30.187l-30.4,30.4C310.933,79.787,269.227,64,223.893,64
+									C117.76,64,32,149.973,32,256s85.76,192,191.893,192S416,362.027,416,256C416,210.667,400.213,169.067,373.867,136.213z
+									M224,405.333c-82.453,0-149.333-66.88-149.333-149.333S141.547,106.667,224,106.667S373.333,173.547,373.333,256
+									S306.453,405.333,224,405.333z" />
+						
+								</svg>
+					   		 </div>
+	                     	<h4>Disponibilidade</h4>
+	                     	<p>Nossos servidores estão configurados e dedicados para atuarem a maior parte do tempo, com isso sempre estaremos online.</p>
+	                  	</div>
+	               </div>
+	               
+	               <div class="col-lg-4 col-md-6">
+	                  	<!-- Single Service -->
+	                  	<div class="single-service">
+							<div>
+								<svg id="icon-check" viewBox="0 0 225 225" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+							    	xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+							    	<g transform="matrix(1,0,0,1,-178.667,-170.667)">
+							        <g class="check" transform="matrix(1,0,0,1,176,113)">
+							        	<path fill="#30ADF2" d="M65,166L101,202L165,138" style="fill:none;stroke:#000000;stroke-width:16.67px;" />
+							        </g>
+							    	<circle class="circle" cx="291" cy="283" r="104" style="fill:none;stroke:#30ADF2;stroke-width:16.67px;" />
+							        </g>
+							   	</svg>
+							</div>
+	                     	<h4>Facilidade</h4>
+	                     	<p>Tomamos o cuidado de fazer coisas simples e amigáveis, afinal ninguém merece dificuldades para usar alguma coisa não é??</p>
+	                  	</div>
+	               </div>
+	            </div>
+        	</div>
+      	</section>
+        
+        <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-sort-up"></i></button>
+        
+        <br />
+        <hr>
+        <br />
+        
+        <!-- SessÃ£o Fale Conosco -->
+		<section id="talk" class="parallax-2 navbar nav-edit navbar-expand-lg navbar-light">
+			<div class="container-fluid">
+	            <div class="row">
+	                <div class="texto-fale-conosco col-xl-9 offset-xl-6 py-4">
+	                    <h1 class="text-center">Dúvida? Fale com a gente</h1>
+<!-- 	                    <p class="lead">Tem alguma dúvida ou gostaria de nos dizer alguma coisa?</p> -->
+	                    <p class="text-center py-1 ">Preencha as informações abaixo e logo vamos te responder.</p>
+	                    <form th:action="@{/escola/enviarDuvida/index}" th:object="${email}" method="POST">
+						    <div class="controls">
+						        <div class="row py-4">
+						            <div class="col-md-4">
+						                <div class="form-group">
+						                    <label for="form_name">Nome *</label>
+						                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Nome" required="required" th:field="*{nomeProfessor}" data-error="É necessário digitar seu nome.">
+						                    <div class="help-block with-errors"></div>
+						                </div>
+						            </div>
+						            <div class="col-md-4">
+						                <div class="form-group">
+						                    <label for="form_lastname">Escola</label>
+						                    <input id="form_scholl" type="text" name="scholl" class="form-control" placeholder="Escola" th:field="*{nomeEscola}">
+						                    <div class="help-block with-errors"></div>
+						                </div>
+						            </div>
+						             <div class="col-md-4">
+							            <div class="form-group">
+						                    <label for="form_email">E-mail *</label>
+						                    <input id="form_email" type="email" name="email" class="form-control" placeholder="E-mail" required="required" th:field="*{emailEscola}" data-error="É necessário digitar seu e-mail.">
+						                    <div class="help-block with-errors"></div>
+							            </div>
+						       		 </div>
+						        </div>
+						        <div class="row">
+						            <div class="col-md-12">
+						                <div class="form-group">
+						                    <label for="form_message">Mensagem *</label>
+						                    <textarea id="form_message" name="message" class="form-control" placeholder="Por favor, digite sua mensagem *" rows="2" required="required" data-error="Por favor, nos escreva uma mensagem." th:field="*{descricaoDuvida}"></textarea>
+						                    <div class="help-block with-errors"></div>
+						                </div>
+						            </div>
+						            <div class="col-md-12">
+						                <input type="submit" class="btn btn-primary btn-send" value="Enviar">
+						            </div>
+						        </div>
+						        <div class="row">
+						            <div class="col-md-12">
+						                <p>
+						                    <strong>*</strong> Estes campos são obrigatórios.</p>
+						            </div>
+						        </div>
+						    </div>
+	                    </form> 
+	                </div>
+	            </div>
+        	</div>
+		</section>
+                
+        <!-- Footer -->
+		<footer id="footer" class="page-footer font-small stylish-color-black pt-1">
+			<hr>
+		    <!-- Footer Links -->
+		    <div class="container text-center text-md-left">
+		      <!-- Grid row -->
+		      	<div class="row">
+					<div class="col-md-left mx-left">
+						<img alt="logo" class="d-block mx-left mb-4" src="../resources/static/img/EduQ-Logo.png" th:src="@{/img/EduQ-Logo.png}" width="90" height="90" />
+					</div>		      	
+		      	
+		        	<!-- Grid column -->
+		        	<div class="col-md-left mx-auto lt-white">
+		          		<!-- Content -->
+		          		<img alt="student" class=" mx-left mb-2" src="../resources/static/img/Student-Life.png" th:src="@{/img/Student-Life.png}" height="50" />
+		          		<h6>Um caminho para o acompanhamento estudantil.</h6>
+		          		<h6>Santa Rita do Sapucaí­ / MG - Brasil</h6>
+		        	</div>
+		        
+		        <!-- Grid column -->
+		        <hr class="clearfix w-100 d-md-none ">
+		        <!-- Grid column -->
+		        <div class="col-md-left mx-auto text-center lt-white">
+		          	<!-- Links -->
+		          	<h5 class="font-weight-bold text-uppercase mt-3 mb-3 ">Links</h5>
+		          	<ul class="list-unstyled">
+		            	<li>
+		              		<a href="/entrar"><font color=#007bff><b>Autenticação - Escola</b></font></a>
+		            	</li>
+		            	<li>
+                            <a href="/entrarProfessor"><font color=#007bff><b>Autenticação - Professor</b></font></a>
+                        </li>
+				      	<li class="list-inline-item mx-auto" >
+		              		<a href="/cadastrarEscola"><font color=#007bff><b>Cadastre sua escola</b></font></a>
+		            	</li>
+		          	</ul>
+		        </div>
+		        <!-- Grid column -->
+		         <hr class="clearfix w-100 d-md-none">
+		        		    <!-- Call to sign up -->
+		        <div class="col-md-0 lt-white">
+				    <ul class="list-inline-item  py-3">
+
+				    </ul>
+	    		    <!-- Social buttons -->
+				    <ul class="mb-3 list-inline-item ">
+				        <li class="list-inline-item  mx-auto">
+				        	<h5 class="mb-3">Redes Sociais</h5>
+				      	</li>
+				      	<li class="list-unstyled">
+				        		<h7>Facebook  <i class="fab fa-facebook-f" > </i></h7>
+				      	</li>
+				      	<li class="list-unstyled">
+				          		<h7>Instagram  <i class="fab fa-instagram"> </i></h7>
+				      	</li>
+				      	<li class="list-unstyled">
+				          		<h7>Linkedin  <i class="fab fa-linkedin-in"> </i></h7>
+				      	</li>
+				    </ul>
+				    <!-- Social buttons -->
+				</div>
+		    <!-- Call to sign up -->
+		      </div>
+		      
+		      <!-- Grid row -->
+		    </div>
+		    <!-- Footer Links -->
+		
+		    <!-- Copyright -->
+		    <div class="footer-copyright text-center py-3 lt-white">© 2019 Copyright:
+		      	<a href="/"><font color=#007bff><b> Eduq.tech</b></font></a>
+		    </div>
+		    <!-- Copyright -->
+		</footer>
+		<div>
+			</div>
+		<!-- Footer -->
+		
+		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/all.min.js}"></script>
+		<script th:src="@{/js/sb-admin.js}"></script>
+		<script>
+			// When the user scrolls down 100px from the top of the document, show the button
+			window.onscroll = function() {scrollFunction()};
+
+			function scrollFunction() {
+		  		if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+		    		document.getElementById("myBtn").style.display = "block";
+		  		} else {
+		    		document.getElementById("myBtn").style.display = "none";
+		  		}
+			}
+
+			// When the user clicks on the button, scroll to the top of the document
+			function topFunction() {
+			  	document.body.scrollTop = 0; // For Safari
+			  	document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+			}
+		</script>
+	</body>
+</html>

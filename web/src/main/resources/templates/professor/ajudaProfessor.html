@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboardProfessor}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudoProfessor">
+			<div id="content-wrapper">
+				<div class="container-fluid">
+					<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardProfessor">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Ajuda</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Dicas úteis</p>
+                        <div class="card-body">
+				            <div class="table-responsive">
+				                <div class="accordion" id="accordionExample">
+				                	<div class="card">
+				                		<div class="card-header" id="headingOne">
+	                                        <h5 class="mb-0">
+	                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+	                                                Como funciona
+	                                            </button>
+	                                        </h5>
+	                                    </div>
+	                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+	                                        <div class="card-body">
+	                                            <p>Antes de mais nada, é necessário conferir seus dados. Eles foram cadastrados por sua escola, mas mesmo assim, seria interessante conferir.</p>
+	                                            <p>Logo após conferir seus dados, você deve verificar as classes que foram atribuídas à você, sendo necessário também verificar sua lista de alunos.
+	                                            	<strong>Vale ressaltar que tanto as classes, como os alunos, são cadastrado pela escola.</strong></p>
+	                                            <p>Uma vez que tudo estiver verificado, você já poderá realizar as suas tarefas diárias como realizar uma chamada ou lançar notas em um boletim.</p>
+	                                        </div>
+	                                    </div>
+				                	</div>
+			                		<div class="card">
+				                		<div class="card-header" id="headingTwo">
+	                                        <h5 class="mb-0">
+	                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+	                                                Como realizar uma chamada
+	                                            </button>
+	                                        </h5>
+	                                    </div>
+	                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+	                                        <div class="card-body">
+	                                            <p>Clique na opção <strong>Chamdas</strong> no menu lateral, que exibirá um menu onde você poderá selecionar as opções de <strong>Chamadas já Realizadas</strong> e <strong>Chamadas não Realizadas</strong>.</p>
+	                                            <p>Uma vez que você seguiu os itens acima, será exibida uma lista com as chamadas disponíveis em cada uma das opções. 
+	                                                Se quiser apenas <strong>conferir os dados de uma chamada</strong>, você pode ir direto para as chamadas já realizadas, mas se quiser <strong>realizar uma chamada</strong>, basta ir às chamadas não realizadas.</p>
+	                                        </div>
+	                                    </div>
+				                	</div>
+				                	<div class="card">
+				                		<div class="card-header" id="headingThree">
+	                                        <h5 class="mb-0">
+	                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+	                                                Como lançar notas em um boletim
+	                                            </button>
+	                                        </h5>
+	                                    </div>
+	                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+	                                        <div class="card-body">
+	                                            <p>Para lançar as notas em um boletim, você deve clicar na opção <strong>Classes</strong> no menu lateral e selecionar <strong>Suas classes</strong>.</p>
+	                                            <p>Esta ação irá mostrar uma lista com as suas classes. O próximo passo é clicar na opção <strong>Ver alunos</strong> da classe desejada</strong>. Será exibida uma lista com todos os alunos daquela classe.
+	                                            	Agora, você deve clicar na opção <strong>Ver boletim</strong> e então será redirecionado ao boletim atual do aluno escolhido.</p>
+	                                        </div>
+	                                    </div>
+				                	</div>
+				                	<div class="card">
+				                		<div class="card-header" id="headingSix">
+	                                        <h5 class="mb-0">
+	                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseTwo">
+	                                                Não encontrou o que procurava?
+	                                            </button>
+	                                        </h5>
+	                                    </div>
+	                                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+	                                        <div class="card-body">
+	                                            <p>Fique tranquilo, preencha o formulário abaixo com a sua dúvida.</p>
+	                                            <p>Este formulário será enviado diretamente para nós, que vamos responder o mais rápido possível no e-mail que você usou para se cadastrar.</p>
+	                                            <div class="container">
+	                                            	<form th:action="@{/professor/enviarDuvida}" th:object="${email}" method="POST">
+							                    		<div class="form-group">
+							                    			<label for="inputDuvida">Título</label>
+							                    			<input type="text" class="form-control input-lg" id="inputDuvida" placeholder="Escreva um título para sua dúvida" required th:field="*{tituloDuvida}">
+							                    		</div>
+							                    		<div class="form-group">
+							                    			<label for="duvida">Descrição</label>
+									                        <textarea name="duvida" id="duvida" class="form-control input-lg" placeholder="Descreva sua dúvida aqui" rows="5" cols="20" required th:field="*{descricaoDuvida}"></textarea>
+									                    </div>
+									                    <div class="form-group">
+									                        <button type="submit" id="btn-confirm" class="btn btn-primary">Enviar</button>
+									                    </div>
+							                    	</form>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+				                	</div>
+				                </div>
+				            </div>
+                        </div>
+                	</div>
+				</div>
+			</div>
+	    </section>
+	</body>
+</html>	

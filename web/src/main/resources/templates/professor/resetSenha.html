@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no">
+		<title>Esqueceu sua senha?</title>
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+		<link th:href="@{/css/all.min.css}" rel="stylesheet" />
+		<link th:href="@{/css/sb-admin.css}" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="container">
+		<div th:replace="fragments/alert"></div>
+            <div class="card card-login mx-auto mt-5">
+                <div class="card-header">Esqueceu sua senha?</div>
+                <div class="card-body">
+                	<div class="text-center">
+						<p class="mb-4">Basta digitar seu código de acesso e em breve você receberá um e-mail para redefini-la.</p>
+					</div>
+                    <form th:action="@{/professor/resetSenha}" th:object="${professor}" method="POST">
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <input type="text" id="inputCodigoAcesso" class="form-control" name="codigo" placeholder="Código" required="true" autofocus="autofocus" th:field="*{codigoGeradoEscola}" maxlength="8" />
+                                <label for="inputEmail">Código de acesso</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-info btn-block">Restaurar</button>
+                        </div>
+                    </form>
+                    <div class="text-center">
+                        <a class="d-block small mt-3" href="/">Página principal</a>
+                    </div>
+                    <div class="text-center">
+						<a class="small" href="/entrarProfessor">Já possui uma conta? Entre!</a>
+					</div>
+                </div>
+            </div>
+        </div>
+	
+		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/all.min.js}"></script>
+		<script th:src="@{/js/sb-admin.js}"></script>
+	</body>
+</html>

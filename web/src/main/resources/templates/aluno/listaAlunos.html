@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudo">
+			<div id="content-wrapper">
+				<div class="container-fluid">
+					<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardEscola">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Alunos</li>
+                        <li class="breadcrumb-item active">Listagem de Alunos</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+	                    <p class="card-header">Lista dos alunos matriculados nesta escola
+	                    	<a th:href="@{/cadastrarAluno}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm float-right">Matricular aluno</a>
+	                    	<button type="button" class="btn btn-success btn-sm float-right" data-toggle="collapse" data-target="#collapseNome" aria-controls="collapseNome">Buscar aluno</button>
+	                    </p>
+	                    <div class="row">
+	                    	<div class="col" style="margin-left=5%;">
+	                    		<div class="collapse" id="collapseNome">
+	                    			<form class="form-inline" method="GET" th:action="@{/alunos/buscar/nome}">
+	                    				<input class="form-control form-control-sm mr-sm-2" type="search" placeholder="Aluno" aria-label="Procurar" th:name="nome"/>
+	                    				<button class="btn btn-success btn-sm float-right">Procurar</button>
+	                    			</form>
+	                    		</div>
+	                    	</div>
+	                    </div>
+	                      <div class="card-body">
+				            <div class="table-responsive">
+				                <table class="table table-striped table-hover table-sm">
+				                    <thead>
+				                    <tr>
+				                        <th>#</th>
+				                        <th>Nome</th>
+				                        <th>Situação</th>
+				                        <th>Ação</th>
+				                    </tr>
+				                    </thead>
+				                    <tbody>
+					                    <tr th:each="a : ${alunos}">
+					                        <td th:text="${a[0]}">1</td>
+					                        <td th:text="${a[1]}">Aluno</td>
+					                        <td th:text="${a[10]}">Situação</td>
+					                        <td colspan="2">
+					                        <a class="btn btn-success btn-sm" th:href="@{/escola/enviarAvisoAluno/{id} (id=${a[0]}) }" role="button" data-toggle="tooltip" data-placement="left" title="Enviar aviso">
+				                                	<i class="fas fa-envelope-open-text"></i>
+				                            	</a>
+					                            <a class="btn btn-info btn-sm" th:href="@{/editarAluno/{id} (id=${a[0]}) }" role="button" data-toggle="tooltip" data-placement="left" title="Editar aluno">
+				                                	<i class="fas fa-pen"></i>
+				                            	</a>
+					                            <button th:id="${ 'btn_alunos/excluir/' + a[0]}" type="button" class="btn btn-danger btn-sm"
+					                            		data-toggle="modal" data-target="#excluirAlunoModal">
+					                                <i class="fas fa-trash-alt"></i>
+					                            </button>
+					                        </td>
+					                    </tr>
+				                    </tbody>
+				                </table>
+				            </div>
+				        </div>  
+	                </div>
+				</div>
+			</div>
+	    </section>
+	</body>
+</html>	

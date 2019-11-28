@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudo">
+	        <div id="content-wrapper">
+                <div class="container-fluid">
+                	<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboard">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Avisos</li>
+                        <li class="breadcrumb-item active">Enviar Aviso Aluno</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Dados do Aviso
+                    		<a th:href="@{/listarAlunos}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm float-right">Ver alunos</a>
+                    	</p>
+                        <div class="card-body">
+                        	<form>
+                        		<div class="form-row">
+                        			 <div class="form-group col-md-6">
+                                        <label for="inputNome">Nome aluno</label>
+                                       	<input type="text" class="form-control" id="inputNome" th:value="${aluno.nome}" readonly/>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputCPFResponsavel">Data matrícula</label>
+                                        <input type="text" class="form-control " id="inputCPFResponsavel" placeholder="CPF do responsável" th:value="${aluno.dataMatricula}" readonly/>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputMatricula">Matrícula</label>
+                                        <input type="text" class="form-control " id="inputMatricula" placeholder="Matrícula do aluno" th:value="${aluno.Matricula}" readonly/>
+                                    </div>
+                        		</div>
+                        	</form>
+                        	<form th:action="@{/escola/novoAvisoAluno}" th:object="${aviso}" method="POST">           
+		                    	<div class="form-row">
+		                    		<div class="form-group col-md-12">
+                                		<label for="recipient-titulo-evento" class="col-form-label">Título</label>
+                                		<input type="text" class="form-control" id="recipient-titulo-evento" th:field="*{tituloAviso}" required="true"/>
+                                		<input type="hidden" th:field="*{alunoId}" th:value="${aluno.id}" />
+	                            	</div>
+	                            </div>
+	                            <div class="form-row">
+	                            	<div class="form-group col-md-6">
+	                            		<label for="tipoAviso">Tipo do aviso</label>
+										<select id="tipoAviso" class="form-control" th:field="*{tipoAviso}">
+	                                        <option value="" disabled>Escolha</option>
+	                                        <option value="Prova">Prova</option>
+	                                        <option value="Trabalho">Trabalho</option>
+	                                        <option value="Viagem">Viagem</option>
+	                                        <option value="Reunião">Reunião</option>
+	                                        <option value="Outros">Outros</option>
+	                                    </select>
+	                            	</div>
+	                            	<div class="form-group col-md-6">
+	                            		<label for="recipient-data-aviso">Data do aviso</label>
+	                                	<input type="date" class="form-control" id="recipient-data-aviso" th:field="*{dataAviso}" required="true"/>
+	                            	</div>
+		                    	</div>
+		                    	<div class="form-row">
+		                    		<label for="recipient-conteudo-aviso" class="col-form-label">Conteúdo</label>
+                               		<input type="text" class="form-control" id="recipient-conteudo-aviso" th:field="*{conteudo}" required="true"/>
+		                    	</div>
+		                    	<br/>
+			                    <div class="form-row">
+			                        <button type="submit" class="btn btn-primary">Enviar</button>
+			                    </div>
+				            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	    </section>
+	</body>
+</html>		

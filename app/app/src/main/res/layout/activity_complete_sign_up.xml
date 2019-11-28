@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/complete_sign_up"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_header">
+
+    <TextView
+        android:id="@+id/lbl_complete_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="76dp"
+        android:layout_marginBottom="96dp"
+        android:text="@string/lbl_complete_sign_up"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/cpf_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.395" />
+
+    <EditText
+        android:id="@+id/cpf_input"
+        android:layout_width="274dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="60dp"
+        android:ems="10"
+        android:hint="@string/input_cpf"
+        android:inputType="number"
+        android:maxLength="14"
+        android:textColor="@color/colorInputs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+
+        android:layout_width="307dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="300dp"
+        android:text="@string/lbl_privacity_terms"
+        android:textColor="@color/colorInputs"
+        android:textColorHighlight="@color/colorInputs"
+        android:textColorLink="@color/colorInputs"
+        android:textCursorDrawable="@color/colorInputs"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_width="136dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/btn_sign_up"
+        android:textColor="#FFFf"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

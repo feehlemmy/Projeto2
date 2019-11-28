@@ -1,0 +1,161 @@
+<resources>
+    <!-- App Strings -->
+    <string name="app_name">EduQ</string>
+    <string name="logo">Logo</string>
+    <string name="create_account">Ainda não possui conta? Crie uma</string>
+    <string name="lbl_or">ou</string>
+
+    <!-- String Sign Up -->
+    <string name="signup_with_email">Cadastrar com E-mail</string>
+    <string name="signup_with_google">Cadastrar com Google</string>
+    <string name="login_from_signup">Já tem conta? Entrar</string>
+
+    <!-- String Sign Up With Email -->
+    <string name="lbl_sign_up_email">Cadastre-se</string>
+    <string name="btn_sign_up">Cadastrar</string>
+    <string name="name">Nome completo</string>
+    <string name="input_password">Senha (minímo 8 caracteres)</string>
+    <string name="input_email">E-mail</string>
+
+    <!-- Complete Sign Up -->
+    <string name="input_cpf">Digite o CPF (Apenas números)</string>
+    <string name="input_birth_date">Data de Nascimento (DD/MM/AAAA)</string>
+    <string name="student_code">Código do estudante</string>
+    <string name="lbl_complete_sign_up">Complete seu cadastro</string>
+    <string name="lbl_privacity_terms">Concordo com os termos de privacidade.</string>
+
+    <!-- Strings login -->
+    <string name="lbl_login">Entrar</string>
+    <string name="lbl_welcome">Bem-vindo de volta!</string>
+    <string name="lbl_fragment_pass">Quase pronto!</string>
+    <string name="lbl_info_login_email">Digite seu e-mail para fazer login em sua conta</string>
+    <string name="lbl_info_login_password">Digite sua senha para fazer login com seu e-mail</string>
+    <string name="lbl_email_login">mail@mail.com</string>
+    <string name="lbl_login_email">Entrar com e-mail</string>
+    <string name="email_login">E-mail</string>
+    <string name="password_login">Senha (8 ou mais dígitos)</string>
+    <string name="password_forget">Esqueceu sua senha?</string>
+    <string name="btn_next">Próximo</string>
+    <string name="btn_login">Entrar</string>
+    <string name="lbl_login_google">Entrar com Google</string>
+
+    <!-- Reset Password -->>
+    <string name="lbl_reset_password">Recuperação de Senha</string>
+    <string name="lbl_reset_password_text">Digite seu email para recuperar sua senha</string>
+    <string name="btn_send_email_recover_password">Enviar</string>
+
+    <!-- Main Activity -->
+    <string name="title_home">Home</string>
+    <string name="title_follow">Acompanhe</string>
+    <string name="title_request">Solicite</string>
+    <string name="title_profile">Perfil</string>
+    <string name="text_follow">Acompanhe</string>
+    <string name="text_profile">Perfil</string>
+
+    <!-- Fragment Request -->
+    <string name="text_request">Solicitação</string>
+    <string name="request_date">Data de requerimento</string>
+    <string name="request_input">Descreva sua solicitação</string>
+    <string name="request_btn">Enviar</string>
+    <string-array name="request_types">
+        <item>Solicitação</item>
+        <item>Autorização</item>
+        <item>Liberação</item>
+        <item>Declaração</item>
+    </string-array>
+
+    <!-- Fragment Profile -->
+    <string name="profilebackground">profileBackground</string>
+    <string name="profilepic">profilepic</string>
+    <string name="lbl_card_edit">edit</string>
+    <string name="lbl_card_about">about</string>
+    <string name="username">Usuário</string>
+    <string name="text_edit">Editar</string>
+    <string name="text_list">Alunos</string>
+    <string name="lbl_add_alunos">Adicionar estudantes</string>
+
+    <!-- Calendar Activity -->
+    <string name="calendar">Calendário e Avisos</string>
+    <string name="calendar_description">A letra "P" azul representa presença, já o "A" vermelho as faltas.
+    </string>
+    <!-- Fragment Follow -->
+    <string name="lbl_info_calendar">Consultar faltas</string>
+    <string name="lbl_info_report">Consultar notas</string>
+
+    <!-- Activity Boleim-->
+    <string name="lbl_boletim">Boletim</string>
+    <string name="lbl_nome_aluno">Aluno</string>
+    <string name="lbl_matricula">Matrícula</string>
+    <string name="lbl_situacao">Situação</string>
+    <string name="lbl_nome_componente">Componente</string>
+    <string name="lbl_media_componente">Média</string>
+    <string name="lbl_nota_componente">Nota</string>
+
+    <string name="signup">Cadastre-se</string>
+
+    <!-- Activity Profile Edit -->
+    <string name="label_edit_profile">Editar Perfil</string>
+    <string name="btn_save">Salvar</string>
+    <string name="password_update">Senha</string>
+    <string name="phone_update">Telefone</string>
+    <string name="update_city">Município</string>
+    <string name="address_update">Endereço</string>
+    <string name="address_number_update">Número</string>
+    <string name="address_cep_update">CEP</string>
+    <string-array name="uf">
+        <item>AC</item>
+        <item>AL</item>
+        <item>AP</item>
+        <item>AM</item>
+        <item>BA</item>
+        <item>CE</item>
+        <item>DF</item>
+        <item>ES</item>
+        <item>GO</item>
+        <item>MA</item>
+        <item>MG</item>
+        <item>MT</item>
+        <item>MS</item>
+        <item>PA</item>
+        <item>PB</item>
+        <item>PE</item>
+        <item>PI</item>
+        <item>PR</item>
+        <item>RJ</item>
+        <item>RN</item>
+        <item>RS</item>
+        <item>RO</item>
+        <item>RR</item>
+        <item>SC</item>
+        <item>SE</item>
+        <item>SP</item>
+        <item>TO</item>
+    </string-array>
+
+    <!-- Fragmente Home -->
+    <string name="lbl_avisos">Avisos e Eventos</string>
+    <string name="lbl_card_avisos">Ver avisos</string>
+    <string name="lbl_card_eventos">Ver Eventos</string>
+
+    <string name="lbl_adicionar_aluno">Alunos</string>
+    <string name="txt_add_student">Código</string>
+    <string name="btn_add_student">Adicionar</string>
+
+    <!-- Activity List Alunos -->
+    <string name="lbl_list_alunos">Lista de estudantes</string>
+    <string name="codigo_escola">Código</string>
+    <string name="nome_aluno">Nome</string>
+
+    <!-- Activity List Avisos -->
+    <string name="lbl_list_avisos">Lista de avisos</string>
+    <string name="titulo_aviso">Título</string>
+    <string name="data_aviso">Data</string>
+    <string name="conteudo_aviso">Conteúdo</string>
+
+    <!-- Activity List Eventos -->
+    <string name="lbl_list_eventos">Lista de eventos</string>
+    <string name="nome_evento">Nome do Evento</string>
+    <string name="data_evento">Data</string>
+    <string name="horario_evento">Horário</string>
+    <string name="descricao_evento">Descrição</string>
+</resources>

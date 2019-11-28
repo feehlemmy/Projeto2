@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e43f65cd-7dc1-4b59-8a95-8cbce029f23e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduq/eduqwebservice/EduqWebserviceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduq/eduqwebservice/controller/ResponsavelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduq/eduqwebservice/controller/ResponsavelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduq/eduqwebservice/model/dao/ResponsavelDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduq/eduqwebservice/model/dao/ResponsavelDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduq/eduqwebservice/model/entity/Responsavel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduq/eduqwebservice/model/entity/Responsavel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduq/eduqwebservice/model/service/ResponsavelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduq/eduqwebservice/model/service/ResponsavelService.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1PWGYoMrXVgeT6O51QEQDLpxDnt" />
+  <component name="RestServicesNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="Found 1 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+        </path>
+        <path>
+          <item name="Found 1 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+          <item name="eduq-webservice" type="c588b436:RestServiceStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="com.eduq.eduqwebservice.model in eduq-webservice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="eduq-webservice" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.eduq.eduqwebservice.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.eduq.eduqwebservice.model" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.com.eduq.eduqwebservice.model in eduq-webservice" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e43f65cd-7dc1-4b59-8a95-8cbce029f23e" name="Default Changelist" comment="" />
+      <created>1565982488574</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1565982488574</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

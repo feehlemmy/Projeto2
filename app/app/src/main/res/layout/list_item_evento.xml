@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="5dp">
+
+    <TextView
+        android:id="@+id/nome_evento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nome_evento"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/descricao_evento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/descricao_evento"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/data_evento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/data_evento"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/horario_evento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/horario_evento"
+        android:textSize="12sp" />
+
+</LinearLayout>

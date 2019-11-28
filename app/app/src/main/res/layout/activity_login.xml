@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_login"
+    android:background="@drawable/bg_header">
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_login"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_email"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="108dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/lbl_login_email"
+        android:textColor="#fff"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/btn_google"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/lbl_login_google"
+        android:textColor="#fff"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="215dp"
+        android:text="@string/lbl_or" />
+
+    <TextView
+        android:id="@+id/create_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="48dp"
+        android:text="@string/create_account"
+        android:textColor="#fff" />
+
+
+</RelativeLayout>

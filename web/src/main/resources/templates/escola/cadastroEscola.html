@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport"
+			content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no">
+		<title>EduQ</title>
+		
+		<link th:href="@{/css/all-2.min.css}" rel="stylesheet" />
+		<link
+			href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+			rel="stylesheet">
+		<link th:href="@{/css/all.min.css}" rel="stylesheet" />
+		<link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
+		<link th:href="@{/css/app.css}" rel="stylesheet" />
+	</head>
+	
+	<body>
+		<div class="container-cadastro-escola">
+<!-- 			<div th:replace="fragments/alert"></div> -->
+			<div class="card-cadastro-escola">
+				<div class="card-body">
+					<!-- Nested Row within Card Body -->
+								<div class="text-center">
+									<h1 class="h4 text-gray-900 mb-4">Cadastre sua escola!</h1>
+								</div>
+								<form class="user" th:action="@{/escola/cadastro}" th:object="${escola}" method="POST">
+									<div class="form-group">
+										<input type="text" class="form-control form-control-user"
+											id="inputNomeEscola" placeholder="Nome da escola"
+											required="true" th:field="*{nome}"/>
+									</div>
+									<div class="form-group row">
+										<div class="col-sm-6 mb-3 mb-sm-0">
+											<input type="text" class="form-control form-control-user"
+												id="inputCodigoMec" placeholder="Código MEC" required="true" th:field="*{codigoMec}" maxlength="8"/>
+										</div>
+										<div class="col-sm-6">
+											<input type="text" class="form-control form-control-user"
+												id="inputDiretor" placeholder="Diretor (a)" required="true" th:field="*{diretor}" maxlength="50"/>
+										</div>
+									</div>
+									<div class="form-group">
+										<input type="email" class="form-control form-control-user"
+											id="inputEmail" placeholder="E-mail da escola" required="true" th:field="*{email}" maxlength="50"/>
+									</div>
+									<div class="form-group row">
+										<div class="col-sm-6 mb-3 mb-sm-0">
+											<input type="password" class="form-control form-control-user"
+												id="inputSenha" placeholder="Senha" required="true" th:field="*{senha}" minlength="8"/>
+										</div>
+										<div class="col-sm-6">
+											<input type="password" class="form-control form-control-user"
+												id="inputRepeatSenha" placeholder="Repita a senha" required="true" th:field="*{confirmacao}" minlength="8"/>
+										</div>
+									</div>
+									<div class="form-group">
+										<button type="submit" class="btn btn-primary btn-user btn-block">Cadastre</button>
+									</div>
+								</form>
+								<hr>
+								<div class="text-center">
+									<a class="small" href="/resetSenha">Esqueceu sua senha?</a>
+								</div>
+								<div class="text-center">
+									<a class="small" href="/entrar">Já possui uma conta? Entre!</a>
+								</div>
+				</div>
+			</div>
+	
+		</div>
+	
+		<!-- Bootstrap core JavaScript-->
+		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{/js/bootstrap.bundle.js}"></script>
+	
+		<!-- Core plugin JavaScript-->
+		<script th:src="@{/js/jquery.easing.min.js}"></script>
+	
+		<!-- Custom scripts for all pages-->
+		<script th:src="@{/js/sb-admin-2.min.js}"></script>
+		<script th:src="@{/js/all-2.min.js}"></script>
+	</body>
+</html>

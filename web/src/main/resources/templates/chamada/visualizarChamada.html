@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section class="layout-content" layout:fragment="conteudo">
+		<div id="content-wrapper">
+			<div class="container-fluid">
+				<!-- Breadcrumbs-->
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/dashboardEscola">Painel</a>
+					</li>
+					<li class="breadcrumb-item active">Chamadas</li>
+					<li class="breadcrumb-item active">Visualizar chamada</li>
+				</ol>
+				<div th:replace="fragments/alert"></div>
+				<div class="card">
+					<p class="card-header">Dados da chamada
+						<a th:href="@{/getChamadasEscola}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm  float-right">Ver chamadas</a>
+					</p>
+					<div class="card-body">
+						<div class="table-responsive">
+							<table class="table table-striped table-hover table-sm">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Chamada</th>
+										<th>Aluno</th>
+										<th>Presença</th>
+										<th>Ações</th>
+									</tr>
+								</thead>
+								<tbody id="listaAlunos">
+									<tr th:each="a : ${alunos}">
+										<td th:text="${a.codigoGeradoEscola}">1</td>
+										<td th:text="${a.id}">1</td>
+										<td th:text="${a.nome}">Aluno</td>
+										<td th:text="${a.nomeMae}">Status</td>
+										<td colspan="2">
+											<a class="btn btn-info btn-sm" th:href="@{/chamada/editarPresenca/{id} (id=${a.codigoGeradoEscola}) }" role="button" data-toggle="tooltip" data-placement="left" title="Editar presença">
+				                                <i class="fas fa-pen"></i>
+				                        	</a>
+				                        </td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

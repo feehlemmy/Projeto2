@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudo">
+			<div id="content-wrapper">
+				<div class="container-fluid">
+					<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardEscola">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Chamadas</li>
+                        <li class="breadcrumb-item active">Lista de Chamadas não Realizadas</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Lista das chamadas não realizadas
+                    		<button class="btn btn-primary btn-sm float-right" type="button" onclick="novaChamada()">Nova chamada</button>
+                    		<a th:href="@{/getChamadasEscola}" class="btn btn-success btn-sm float-right">Chamadas realizadas</a>
+                    	</p>
+                        <div class="card-body">
+				            <div class="table-responsive">
+				                <table class="table table-striped table-hover table-sm">
+				                    <thead>
+				                    <tr>
+				                        <th>#</th>
+				                        <th>Classe</th>
+				                        <th>Ano Classe</th>
+				                        <th>Data</th>
+				                        <th>Realizada</th>
+				                        <th>Ações</th>
+				                    </tr>
+				                    </thead>
+				                    <tbody id="listaChamadas">
+				                    	<tr th:each="c : ${chamadas}">
+					                        <td class="clickable" th:text="${c.id}">1</td>
+					                        <td class="clickable" th:text="${c.nome}">Classe</td>
+					                        <td class="clickable" th:text="${c.cep}">Ano Classe</td>
+					                        <td class="clickable" th:text="${c.cpf}">Data</td>
+					                        <td class="clickable" th:text="${c.email}">Realizada</td>
+					                        <td colspan="2">
+					                            <a class="btn btn-info btn-sm" th:href="@{/realizarChamada/{id} (id=${c.id})}" role="button" data-toggle="tooltip" data-placement="left" title="Realizar chamada">
+					                                <i class="fas fa-caret-square-right"></i>
+					                            </a>
+					                            <button th:id="${ 'btn_chamadas/excluir/' + c.id}" type="button" class="btn btn-danger btn-sm"
+			                            			data-toggle="modal" data-target="#excluirModal">
+			                            			<i class="fas fa-trash-alt"></i>
+			                            		</button>
+					                        </td>
+					                    </tr>
+				                    </tbody>
+				                </table>
+				            </div>
+                        </div>
+                	</div>
+				</div>
+			</div>
+			
+			<!-- Modal Nova Chamada -->
+            <form th:action="@{/escola/novaChamada}" th:object="${chamada}" method="POST">
+            	<div class="modal fade" id="chamadaModal" tabindex="-1" role="dialog" aria-labelledby="avisoModalLabel" aria-hidden="true">
+		            <div class="modal-dialog" role="document">
+		                <div class="modal-content">
+		                    <div class="modal-header">
+		                        <h5 class="modal-title" id="exampleModalLabel">Dados da chamada</h5>
+		                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		                            <span aria-hidden="true">&times;</span>
+		                        </button>
+		                    </div>
+		                    <div class="modal-body">
+		                    	<div class="form-group row">
+                                	<label for="recipient-data-chamada">Data da chamada</label>
+                                	<input type="date" class="form-control" id="recipient-data-chamada" th:field="*{dataChamada}" required="true"/>
+                                	<label for="inputClasseChamada">Classe</label>
+                                	<select id="inputClasseChamada" class="form-control" required="true" th:field="*{idClasse}">
+                                   		<option value="" disable>Escolha</option>
+                                   		<option th:each="c : ${classes}"
+                                   				th:value="${c[0]}" th:text="${c[1]}">Classe</option>
+                                   	</select>
+		                    	</div>
+		                    </div>
+		                    <div class="modal-footer">
+		                        <button class="btn btn-secundary" data-dismiss="modal">Cancelar</button>
+		                        <button type="submit" class="btn btn-primary">Enviar</button>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+            </form>
+	        <!-- Modal Nova Chamada -->
+	        
+	        <script>	        	
+		        function novaChamada() {
+		        	$('#chamadaModal').modal('show');
+	        	}
+	        </script>
+	    </section>
+	</body>
+</html>	

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no">
+		<title>Esqueceu sua senha?</title>
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+		<link th:href="@{/css/all.min.css}" rel="stylesheet" />
+		<link th:href="@{/css/sb-admin.css}" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="container">
+			<div th:replace="fragments/alert"></div>
+            <div class="card card-login mx-auto mt-5">
+                <div class="card-header">Esqueceu sua senha?</div>
+                <div class="card-body">
+                	<div class="text-center">
+						<p class="mb-4">Basta digitar seu código do MEC e em breve você receberá um e-mail para redefini-la.</p>
+					</div>
+                    <form class="user" th:action="@{/escola/restaurarSenha}" th:object="${escola}" method="POST">
+						<div class="form-group">
+                            <div class="form-label-group">
+                                <input type="text" id="inputCodigo" class="form-control" name="codigo" placeholder="Código" required="true" autofocus="autofocus" th:field="*{codigoMec}" maxlength="8" />
+                                <label for="inputEmail">Código MEC</label>
+                            </div>
+                        </div>
+						<button type="submit" class="btn btn-primary btn-user btn-block">Restaurar</button>
+					</form>
+                    <div class="text-center">
+                        <a class="d-block small mt-3" href="/">Página principal</a>
+                    </div>
+                    <div class="text-center">
+						<a class="small" href="/entrar">Já possui uma conta? Entre!</a>
+					</div>
+                </div>
+            </div>
+        </div>
+	
+		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/all.min.js}"></script>
+		<script th:src="@{/js/sb-admin.js}"></script>
+	</body>
+</html>

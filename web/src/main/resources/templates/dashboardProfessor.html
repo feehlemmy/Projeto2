@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport"
+			content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no">
+		<title>EduQ</title>
+		
+		<link th:href="@{/css/all-2.min.css}" rel="stylesheet" />
+		<link
+			href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+			rel="stylesheet">
+		<link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
+		<link th:href="@{/css/dashboardCSS.css}" rel="stylesheet">
+		<link th:href="@{/css/argon.css}" rel="stylesheet">
+		<link th:href="@{/css/nucleo.css}" rel="stylesheet">
+		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{/js/jquery.mask.js}"></script>
+		<script th:src="@{/js/daypilot-all.min.js}"></script>
+	</head>
+	
+	<body id="page-top">
+		<!-- Page Wrapper -->
+		<div id="wrapper">
+	
+			<div th:replace="fragments/sidebarProfessor :: nav-sidebar ">sidebar</div>
+	
+			<!-- Content Wrapper -->
+			<div id="content-wrapper" class="d-flex flex-column">
+				<!-- Main Content -->
+				<div id="content">
+					<div th:replace="fragments/headerProfessor :: cabecalho">
+						<div>navbar</div>
+					</div>
+					<!-- Begin Page Content -->
+					<section layout:fragment="conteudoProfessor">
+						<div class="container-fluid">conteudo principal das páginas</div>
+					</section>
+				</div>
+				<footer th:replace="fragments/footer :: rodape">
+					<div>footer</div>
+				</footer>
+			</div>
+		</div>
+	
+		<!-- Modal Logoff -->
+        <form action="/professor/sair" method="POST">
+	        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+	            <div class="modal-dialog" role="document">
+	                <div class="modal-content">
+	                    <div class="modal-header">
+	                        <h5 class="modal-title" id="exampleModalLabel">Deseja sair?</h5>
+	                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                            <span aria-hidden="true">&times;</span>
+	                        </button>
+	                    </div>
+	                    <div class="modal-body">
+	                        Selecione <span id="confirm-label" class="badge badge-danger">Sair</span> caso queira realmente desconectar sua sessão atual.
+	                    </div>
+	                    <div class="modal-footer">
+	                        <button class="btn btn-secundary" data-dismiss="modal">Cancelar</button>
+	                        <button type="submit" id="btn-confirm" class="btn btn-danger">Sair</button>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+        </form>
+        <!-- Modal Logoff -->
+        
+        <!-- Modal Excluir -->
+        <div class="modal fade" id="excluirModal" tabindex="-1" role="dialog" aria-labelledby="excluirModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Deseja realmente excluir?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Selecione <span id="confirm-label" class="badge badge-danger">Excluir</span> caso queira realmente remover o item selecionado.
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secundary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" id="ok_confirm" class="btn btn-danger">Excluir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Excluir -->
+	
+		<!-- Bootstrap core JavaScript-->
+		<script th:src="@{/js/bootstrap.bundle.js}"></script>
+	
+		<!-- Core plugin JavaScript-->
+		<script th:src="@{/js/jquery.easing.min.js}"></script>
+	
+		<!-- Custom scripts for all pages-->
+		<script th:src="@{/js/sb-admin-2.min.js}"></script>
+		<script th:src="@{/js/all-2.min.js}"></script>
+		<script th:src="@{/js/argon.js}"></script>
+		<script th:src="@{/js/dashboardJS.js}"></script>
+		<script th:src="@{/js/cidadesAPI.js}"></script>
+		<script>
+			var url = '';
+			
+			$('button[id*="btn_"]').click(function() {
+				url = "http://localhost:8080/" + $(this).attr('id').split("_")[1];
+			});
+			
+			$('#ok_confirm').click(function() {
+				document.location.href = url;
+			});
+			
+            $(document).ready(function () {
+                $('.cpf').mask('000.000.000-00');
+                $('.telefone').mask('(00) 00000-0000');
+                $('.cep').mask('00.000-000');
+                $('.ano').mask('0000');
+                $('.carga').mask('000hrs');
+            }); 
+            var password = document.getElementById("password"), 
+                confirm_password = document.getElementById("confirm_password");
+        </script>
+	</body>
+</html>

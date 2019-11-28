@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no">
+		<title>Entrar</title>
+		<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+		<link th:href="@{/css/all.min.css}" rel="stylesheet" />
+		<link th:href="@{/css/sb-admin.css}" rel="stylesheet" />
+		<link th:href="@{/css/app.css}" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="container-login-professor">
+            <div class="card-login-professor">
+                <div class="card-header">
+                	<div th:replace="fragments/alert"></div>
+                	<h5>Autenticação - Professor</h5>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/professor/entrar}" th:object="${professor}" method="POST">
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <input type="text" id="inputCodigoAcesso" class="form-control" name="codigo" placeholder="Código" required="true" autofocus="autofocus" th:field="*{codigoGeradoEscola}" maxlength="8" />
+                                <label for="inputEmail">Código de acesso</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-label-group">
+                                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required="true" minlength="8" th:field="*{senhaGerada}" />
+                                <label for="inputPassword">Senha</label>
+                            </div>
+                            <br />
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-info btn-block ">Entrar</button>
+                            <input type="checkbox" id="remember-me" name="remember-me" />
+  							<label for="remember-me">Lembrar?</label>
+                        </div>
+                    </form>
+                    <div class="text-center">
+                        <a class="d-block small mt-3" href="/">Página principal</a>
+                        <a class="d-block small" href="/professor/resetSenha">Esqueceu sua senha?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+	
+		<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+		<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/all.min.js}"></script>
+		<script th:src="@{/js/sb-admin.js}"></script>
+	</body>
+</html>

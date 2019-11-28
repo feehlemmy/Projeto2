@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboardProfessor}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudoProfessor">
+	        <div id="content-wrapper">
+                <div class="container-fluid">
+                	<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardProfessor">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Eventos</li>
+                        <li class="breadcrumb-item active">Novo Evento</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Preencha os dados abaixo para cadastrar um evento
+                    		<a th:href="@{/getCalendarioProfessor}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm float-right">Ver eventos</a>
+                    	</p>
+                        <div class="card-body">
+                        	<form class="user" th:action="@{/professor/cadastrarEvento}" th:object="${evento}" method="POST">
+                        		<div class="form-group row">
+									<div class="col-sm-12">
+										<label for="inputNomeEvento">Informe o nome do evento</label>
+										<input type="text" class="form-control"
+											id="inputNomeEvento" placeholder="Nome do evento" required="true" th:field="*{nomeEvento}"/>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col-sm-4">
+										<label for="inputInicioEvento">Data de início</label>
+										<input type="date" class="form-control"
+											id="inputInicioEvento" placeholder="Data de início" required="true" th:field="*{dataInicioEvento}"/>
+									</div>
+									<div class="col-sm-4">
+										<label for="inputHoraEvento">Hora de início</label>
+										<input type="time" class="form-control"
+											id="inputHoraEvento" placeholder="Horário de início" required="true" th:field="*{horaInicioEvento}"/>
+									</div>
+									<div class="col-sm-4">
+										<label for="inputFimEvento">Data de fim</label>
+										<input type="date" class="form-control"
+											id="inputFimEvento" placeholder="Data de fim" required="true" th:field="*{dataFimEvento}"/>
+									</div>
+								</div>
+								<div class="form-row">
+                                	<div class="form-group col-md-12">
+                                        <label for="inputDescricao">Descrição</label>
+                                        <input type="text" placeholder="Descrição do evento" class="form-control" id="inputDescricao" required="true" th:field="*{descricaoEvento}"/>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                	<input type="hidden" id="id" th:field="*{id}" />
+                                	<button class="btn btn-primary" type="submit">Salvar</button>
+                                </div>
+                        	</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	    </section>
+	</body>
+</html>		

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+	<head>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudo">
+	        <div id="content-wrapper">
+                <div class="container-fluid">
+                	<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardEscola">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Boletim</li>
+                        <li class="breadcrumb-item active">Criar boletim</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Selecione a classe para a qual o boletim será criado
+                    		<a th:href="@{/getBoletinsEscola}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm  float-right">Ver boletins</a>
+                    	</p>
+                        <div class="card-body">
+                        	<form th:action="${boletim.id == null} ? @{/criarBoletim} : @{/editarBoletim}" 
+                        		th:object="${boletim}" method="POST">
+                        		<div>
+		                        	<div class="form-row">
+		                        		<div class="form-group col-md-3">
+	                                        <label for="inputBimestre">Bimestre corrente</label>
+	                                		<select id="inputBimestre" class="form-control" required="true" th:field="*{bimestre}">
+	                                            <option value="" disabled>Escolha</option>
+	                                            <option value="1">1º Bimestre</option>
+	                                            <option value="2">2º Bimestre</option>
+	                                            <option value="3">3º Bimestre</option>
+	                                            <option value="4">4º Bimestre</option>
+	                                        </select>
+                                    	</div>
+			                        	<div class="form-group col-md-3">
+			                        	 	<label for="inputClasse">Classe</label>
+			                        	    <select class="form-control" id="inputClasse" th:field="*{idClasse}">
+			                        	    	<option value="" disable>Escolha</option>
+												<option th:each="c : ${classes}" th:value="${c[0]}" th:text="${c[1]}">Classe</option>
+											</select>
+			                         	</div>
+			                         	<div class="form-group col-md-6">
+			                        	 	<label for="inputObservacao">Observação</label>
+                                        	<input type="text" class="form-control" id="inputObservacao" th:field="*{observacao}" />
+			                         	</div>
+			                         </div>
+		                             <div class="form-row">
+		                              	<input type="hidden" id="id" th:field="*{id}" />
+		                               	<button class="btn btn-success" type="submit">Salvar</button>
+		                             </div>
+		                        </div>
+                        	</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	    </section>
+	</body>
+</html>		

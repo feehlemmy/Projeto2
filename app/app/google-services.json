@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "283027561381",
+    "firebase_url": "https://eduq-f49fd.firebaseio.com",
+    "project_id": "eduq-f49fd",
+    "storage_bucket": "eduq-f49fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283027561381:android:bc4a3b04b32f42382a264c",
+        "android_client_info": {
+          "package_name": "com.pinguimsoftware.gabrielsilva.eduqapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "283027561381-f5cin2p4pv2bo0ms77o0nvpsudlajint.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pinguimsoftware.gabrielsilva.eduqapp",
+            "certificate_hash": "8bd36daf97faa90934a3e9d4a4cc57d76ed7e33f"
+          }
+        },
+        {
+          "client_id": "283027561381-kgm76tvosatb18gu7ki02dv8bof9gd0d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4LLNnMJ2irUYv4ZvxEQnvQrToA5DWSpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "283027561381-kgm76tvosatb18gu7ki02dv8bof9gd0d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

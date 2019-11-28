@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboardProfessor}">
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+	<section class="layout-content" layout:fragment="conteudoProfessor">
+		<div id="content-wrapper">
+			<div class="container-fluid">
+				<!-- Breadcrumbs-->
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/dashboardEscolaProfessor">Painel</a>
+					</li>
+					<li class="breadcrumb-item active">Chamadas</li>
+					<li class="breadcrumb-item active">Lista de Alunos</li>
+				</ol>
+				<div th:replace="fragments/alert"></div>
+				<div class="card">
+					<p class="card-header">Lista de alunos da classe
+						<a th:href="@{/getChamadasProfessor}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm  float-right">Ver chamadas</a>
+					</p>
+					<div class="card-body">
+						<div class="table-responsive">
+							<form method="POST" th:action="@{/salvarChamada}" th:object="${chamada}">
+								<table class="table table-striped table-hover table-sm">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Aluno</th>
+											<th>Nome</th>
+											<th>Presente</th>
+										</tr>
+									</thead>
+									<tbody id="listaAlunos">
+										<tr th:each="a : ${alunos}">
+											<td class="idChamada" th:text="${id}"></td>
+											<td class="idAluno" th:text="${a[0]}">1</td>
+											<td th:text="${a[1]}">Aluno</td>
+											<td>
+												<select class="presenca" required="true">
+												  	<option disabled>Escolha</option>
+												  	<option value="Presente">Presente</option>
+												  	<option value="Ausente">Ausente</option>
+												</select>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<br />
+								<button class="btn btn-success" type="button" onClick="enviarChamada()">Salvar</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Modal Chamada Realizada -->
+        <div class="modal fade" id="chamadaModal" tabindex="-1" role="dialog" aria-labelledby="chamadaModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Chamada realizada com sucesso!</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="ok_chamada" class="btn btn-success">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Chamada Realizada -->
+        
+		<script>
+			function enviarChamada(){
+				var ary = [];
+		        $(function () {
+		            $('#listaAlunos tr').each(function (a, b) {
+		            	var id = $('.idChamada', b).text();
+		            	var name = $('.idAluno', b).text();
+		                var value = $('.presenca', b).val();
+		                ary.push({ Id: id, Name: name, Value: value });
+		               
+		            });
+		            
+		            $.ajax({
+		                type: "POST",
+		                contentType : 'application/json; charset=utf-8',
+		                dataType : 'json',
+		                url: "/salvarChamada",
+		                data: JSON.stringify(ary),
+		                complete: function(){
+		                	$('#chamadaModal').modal({backdrop: 'static', keyboard: false})  
+		                	$('#chamadaModal').modal('show');
+		                }
+		            });
+		        });
+			}
+			
+			$('#ok_chamada').click(function() {
+				document.location.href = "http://localhost:8080/getChamadasProfessor";
+			});
+		</script>
+	</section>
+</body>
+</html>

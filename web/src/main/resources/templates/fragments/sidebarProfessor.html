@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div th:fragment="nav-sidebar">
+		<div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+			<!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+			<nav
+				class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light"
+				id="sidenav-main" style="background-color: #30ADF2;">
+				<div class="container-fluid">
+					<div class="collapse navbar-collapse" id="sidenav-collapse-main">
+						<!-- Collapse header -->
+						<div class="navbar-collapse-header d-md-none">
+							<div class="row">
+								<div class="col-6 collapse-brand">
+									<a href="/dashboardProfessor">
+										<div class="d-flex w-100 justify-content-start align-items-center">
+						                    <i class="fas fa-fw fa-tachometer-alt"></i>
+						                    <span class="menu-collapsed">&emsp;Painel</span>    
+						                </div>
+									</a>
+								</div>
+								<div class="col-6 collapse-close">
+									<button type="button" class="navbar-toggler"
+										data-toggle="collapse" data-target="#sidenav-collapse-main"
+										aria-controls="sidenav-main" aria-expanded="false"
+										aria-label="Toggle sidenav">
+										<span></span> <span></span>
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<!-- Navigation -->
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link" href="/dashboardProfessor">
+				                    <i class="fas fa-fw fa-tachometer-alt text-white"></i>
+				                    <span class="menu-collapsed" style="color: white;">&emsp;Painel</span>    
+					            </a>
+							</li>
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+								role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="fas fa-landmark text-white"></i>
+		                    		<span class="menu-collapsed" style="color: white;">&emsp;Gerenciar</span>
+								</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" th:href="@{/getCalendarioProfessor}">Calendário</a>
+									<a class="dropdown-item" th:href="@{/getBoletinsProfessor}">Boletim</a>
+									<a class="dropdown-item" th:href="@{/professor/getAvisos}">Avisos</a>
+									<a class="dropdown-item" th:href="@{/professor/requisicoes}">Requisições</a>
+								</div>
+							</li>
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+								role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="fas fa-users text-white"></i>
+		                    		<span class="menu-collapsed" style="color: white;">&emsp;Classes</span>
+								</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" th:href="@{/listarClassesProfessor}">Suas classes</a>
+									<a class="dropdown-item" th:href="@{/getAlunosProfessor}">Buscar aluno</a>
+								</div>
+							</li>
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+								role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="fas fa-clipboard-list text-white"></i>
+		                    		<span class="menu-collapsed" style="color: white;">&emsp;Chamadas</span>
+								</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" th:href="@{/getChamadasNaoRealizadasProfessor}">Chamadas não realizadas</a>
+									<a class="dropdown-item" th:href="@{/getChamadasProfessor}">Chamadas já realizadas</a>
+								</div>
+							</li>
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+								role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="fa fa-user fa-fw mr-3 text-white"></i>
+		                    		<span class="menu-collapsed" style="color: white;">Perfil</span>
+								</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" th:href="@{/editarProfessor}">Editar perfil</a>
+									<a class="dropdown-item" th:href="@{/alterarSenhaProfessor}">Alterar senha</a>
+								</div>
+							</li>
+						</ul>
+						<!-- Divider -->
+						<hr class="my-3">
+						<!-- Navigation -->
+						<ul class="navbar-nav mb-md-3">
+							<li class="nav-item">
+								<a class="nav-link" th:href="@{/ajudaProfessor}">
+									<i class="fa fa-question fa-fw mr-3 text-white"></i>
+									<span style="color: white;">Ajuda</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboardProfessor}">
+	<head>
+		<meta charset="UTF-8"/>
+	</head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudoProfessor">
+	        <div id="content-wrapper">
+                <div class="container-fluid">
+                	<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardProfessor">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Calendário</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Seu calendário
+                    		<a th:href="@{/novoEventoProfessor}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm float-right">Novo evento</a>
+                    	</p>
+                        <div class="card-body">
+                        	<div class="container">
+                        		<div id="dp"></div>
+                        	</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal Editar Evento -->
+            <form th:action="@{/professor/editarEvento}" th:object="${evento}" method="POST">
+            	<div class="modal fade" id="eventoModal" tabindex="-1" role="dialog" aria-labelledby="eventoModalLabel" aria-hidden="true">
+		            <div class="modal-dialog" role="document">
+		                <div class="modal-content">
+		                    <div class="modal-header">
+		                        <h5 class="modal-title" id="exampleModalLabel">Dados do evento</h5>
+		                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		                            <span aria-hidden="true">&times;</span>
+		                        </button>
+		                    </div>
+		                    <div class="modal-body">
+		                    	<div class="form-group">
+		                    		<input type="hidden" class="form-control" id="recipient-id-evento" th:field="*{id}" readonly />
+                                	<label for="recipient-nome-evento" class="col-form-label">Nome do evento</label>
+                                	<input type="text" class="form-control" id="recipient-nome-evento" th:field="*{nomeEvento}" required="true"/>
+		                    		<label for="recipient-data-inicio">Início</label>
+                                	<input type="date" class="form-control" id="recipient-data-inicio" th:field="*{dataInicioEvento}" required="true"/>
+                                	<label for="inputHoraEvento">Hora de início</label>
+									<input type="time" class="form-control" id="recipient-horario-inicio" placeholder="Horário de início" required="true" th:field="*{horaInicioEvento}"/>
+                                	<label for="recipient-data-fim">Fim</label>
+                                	<input type="date" class="form-control" id="recipient-data-fim" th:field="*{dataFimEvento}" required="true"/>
+		                    	</div>
+		                    	<div class="form-group">
+		                    		<label for="recipient-descricao-evento" class="col-form-label">Descrição do evento</label>
+                                	<input type="text" class="form-control" id="recipient-descricao-evento" th:field="*{descricaoEvento}" required="true"/>
+		                    	</div>
+		                    </div>
+		                    <div class="modal-footer">
+		                        <button class="btn btn-secundary" data-dismiss="modal">Cancelar</button>
+		                        <button type="submit" id="ok_confirm" class="btn btn-primary">Salvar</button>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+            </form>
+	        <!-- Modal Editar Evento -->
+            
+            <script>
+            	var dp = new DayPilot.Month("dp");
+            	dp.locale = "pt-br";
+				var eventos = [];
+				var diasLetivos = [];
+		
+				$('document').ready(function(){
+					$.ajax({
+						url: '/professor/getDiasLetivos',
+				        type: 'GET',
+				        success: function (dataDiasLetivos) {
+				            for (var i = 0; i < dataDiasLetivos.length; i++) {
+				            	diasLetivos.push(dataDiasLetivos[i]);
+				            }
+							setDiasLetivos();
+				        }
+					});
+				});
+		
+				function adicionarEventos(){
+					for (var i = 0; i < eventos.length; i++) {
+				        var evento = eventos[i];
+				        console.log(evento);
+				        var e = new DayPilot.Event({
+				            id: evento[0] + '_' + evento[4] + '_' + evento[5],
+				            text: evento[6],
+				            start: evento[3],
+				            end: evento[2]
+				        });
+				        
+				        dp.events.add(e);
+				        dp.onEventClick = function(args){
+				            abrirModal(args.e.data);
+				        };
+				    }
+				}
+				
+				function abrirModal(eventoClicado){
+					var conteudo = eventoClicado.id.split('_');
+					var dataInicial = eventoClicado.start.value.split('T');
+					var dataFinal = eventoClicado.end.value.split('T');
+					console.log(eventoClicado);
+					$("#recipient-id-evento").val(conteudo[0]);
+                    $("#recipient-nome-evento").val(eventoClicado.text);
+                    $("#recipient-data-inicio").val(dataInicial[0]);
+                    $("#recipient-horario-inicio").val(conteudo[2]);
+                    $("#recipient-data-fim").val(dataFinal[0]);
+                    $("#recipient-descricao-evento").val(conteudo[1]);
+					$('#eventoModal').modal('show');
+				}
+				
+				function setDiasLetivos(){
+					for (var i = 0; i < diasLetivos.length; i++) {
+						var dia = diasLetivos[i];
+				        var n = new DayPilot.Event({
+				        	id: "",
+				            text: "Dia Letivo",
+				            start: dia.dataAviso,
+				            end: dia.dataAviso,
+				            backColor: '#90EE90'
+				        });
+				        
+				        dp.events.add(n);
+					}
+					
+					getEventos();
+				}
+				
+				function getEventos(){
+					$.ajax({
+						url: '/getEventosProfessor',
+				        type: 'GET',
+				        success: function (dataEventos) {
+				            for (var i = 0; i < dataEventos.length; i++) {
+				                eventos.push(dataEventos[i]);
+				            }
+				            adicionarEventos();
+				        }
+					});
+				}
+				
+				dp.init();
+			</script>	
+	    </section>
+	</body>
+</html>		

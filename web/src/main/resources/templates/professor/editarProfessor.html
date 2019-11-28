@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboardProfessor}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudoProfessor">
+	        <div id="content-wrapper">
+                <div class="container-fluid">
+                	<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardProfessor">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Perfil</li>
+                        <li class="breadcrumb-item active">Editar perfil</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	
+                        <div class="card-body">
+                        	<form th:action="${pessoa.id == null} ? @{/professor/cadastro} : @{/editarProfessor}"
+                        		  th:object="${pessoa}" method="POST">
+                        		<div class="form-row">
+                        			 <div class="form-group col-md-12">
+                                        <label for="inputNome">Nome</label>
+                                        <input type="text" class="form-control" id="inputNome" required="true" th:field="*{nome}" />
+                                    </div>
+                        		</div>
+                        		<div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label for="inputCPF">CPF</label>
+                                        <input type="text" class="cpf form-control " id="inputCPF" placeholder="CPF" name="cpf" required="true" th:field="*{cpf}"/>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputTelefone">Telefone</label>
+                                        <input type="text" class="telefone form-control" id="inputTelefone" placeholder="Telefone" name="telefone" required="true" th:field="*{telefone}"/>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail">E-mail</label>
+                                        <input type="email" class="form-control" id="inputEmail" placeholder="E-mail" name="email" required="true" th:field="*{email}"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputAddress">Endereço</label>
+                                    <input type="text" class="form-control" id="inputAddress" placeholder="Seu Endereço, 1234, Seu Bairro" required="true" th:field="*{endereco}"/>
+                                </div>
+                                <div class="form-row">
+                                	<div class="form-group col-md-4">
+                                		<label for="estado">UF</label>
+                                		<select id="estado" class="form-control" onchange="buscaCidades(this.value)" th:field="*{uf}">
+                                            <option value="" selected>Escolha</option>
+                                            <option value="AC">Acre - AC</option>
+                                            <option value="AL">Alagoas - AL</option>
+                                            <option value="AP">Amapá - AP</option>
+                                            <option value="AM">Amazonas - AM</option>
+                                            <option value="BA">Bahia - BA</option>
+                                            <option value="CE">Ceará - CE</option>
+                                            <option value="DF">Distrito Federal - DF</option>
+                                            <option value="ES">Espírito Santo - ES</option>
+                                            <option value="GO">Goiás - GO</option>
+                                            <option value="MA">Maranhão - MA</option>
+                                            <option value="MT">Mato Grosso - MT</option>
+                                            <option value="MS">Mato Grosso do Sul - MS</option>
+                                            <option value="MG">Minas Gerais - MG</option>
+                                            <option value="PA">Pará - PA</option>
+                                            <option value="PB">Paraíba - PB</option>
+                                            <option value="PR">Paraná - PR</option>
+                                            <option value="PE">Pernambuco - PE</option>
+                                            <option value="PI">Piauí - PI</option>
+                                            <option value="RJ">Rio de Janeiro - RJ</option>
+                                            <option value="RN">Rio Grande do Norte - RN</option>
+                                            <option value="RS">Rio Grande do Sul - RS</option>
+                                            <option value="RO">Rondônia - RO</option>
+                                            <option value="RR">Roraima - RR</option>
+                                            <option value="SC">Santa Catarina - SC</option>
+                                            <option value="SP">São Paulo - SP</option>
+                                            <option value="SE">Segipe - SE</option>
+                                            <option value="TO">Tocantins - TO</option>
+                                        </select>
+                                	</div>
+                                	<div class="form-group col-md-6">
+                                        <label for="cidade">Município</label>
+                                        <select id="cidade" name="cidade" class="form-control" th:field="*{municipio}"></select>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="inputCEP">CEP</label>
+                                        <input type="text" class="cep form-control" id="inputCEP" name="cep" required="true" th:field="*{cep}"/>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                	<input type="hidden" id="id" th:field="*{id}" />
+                                	<button class="btn btn-primary" type="submit">Salvar</button>
+                                </div>
+                        	</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	    </section>
+	</body>
+</html>		

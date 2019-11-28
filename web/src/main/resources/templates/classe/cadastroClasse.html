@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html layout:decorate="~{dashboard}">
+	<head><meta charset="UTF-8"/></head>
+	<body>
+	    <section class="layout-content" layout:fragment="conteudo">
+	        <div id="content-wrapper">
+                <div class="container-fluid">
+                	<!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/dashboardEscola">Painel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Classes</li>
+                        <li class="breadcrumb-item active">Cadastro de Classes</li>
+                    </ol>
+                    <div th:replace="fragments/alert"></div>
+                    <div class="card">
+                    	<p class="card-header">Informe os dados da Classe
+                    		<a th:href="@{/listarClasses}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm  float-right">Ver classes</a>
+                    	</p>
+                        <div class="card-body">
+                        	<form th:action="${classe.id == null} ? @{/classe/cadastro} : @{/editarClasse}"
+                        		  th:object="${classe}" method="POST">
+                        		<div class="form-row">
+                        			 <div class="form-group col-md-6">
+                                        <label for="inputNome">Nome da Classe</label>
+                                        <input type="text" class="form-control" id="inputNome" required="true" th:field="*{nome}" />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                		<label for="turno">Turno</label>
+                                		<select id="turno" class="form-control" th:field="*{turno}">
+                                            <option value="" selected>Escolha</option>
+                                            <option value="Matutino">Matutino</option>
+                                            <option value="Vespertino">Vespertino</option>
+                                        </select>
+                                	</div>
+                        		</div>
+                        		<div class="form-row">
+                                    <div class="form-group col-md-3">
+                                        <label for="inputAnoClasse">Ano da Classe</label>
+                                		<select id="inputAnoClasse" class="form-control" required="true" th:field="*{anoClasse}">
+                                            <option value="" disabled>Escolha</option>
+                                            <option value="1 Ano">1º Ano</option>
+                                            <option value="2 Ano">2º Ano</option>
+                                            <option value="3 Ano">3º Ano</option>
+                                            <option value="4 Ano">4º Ano</option>
+                                            <option value="5 Ano">5º Ano</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputAnoLetivo">Ano levido da Classe</label>
+                                        <input type="text" class="ano form-control" id="inputAnoLetivo" placeholder="Ano Letivo" required="true" th:field="*{anoLetivo}"/>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                    	<label for="inputProfessor">Professor</label>
+                                    	<select class="form-control" required="true" th:field="*{professorId}">
+                                    		<option value="">Escolha</option>
+                                    		<option th:each="p : ${professores}"
+                                    				th:value="${p[2]}" th:text="${p[1]}">Professor</option>
+                                    	</select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputDescricao">Descrição</label>
+                                        <input type="text" class="form-control" id="inputDescricao" required="true" th:field="*{descricao}"/>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                	<input type="hidden" id="id" th:field="*{id}" />
+                                	<button class="btn btn-primary" type="submit">Salvar</button>
+                                </div>
+                        	</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	    </section>
+	</body>
+</html>		
